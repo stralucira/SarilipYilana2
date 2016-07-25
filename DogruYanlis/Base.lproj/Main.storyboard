@@ -1,25 +1,190 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7Vt-51-M8y">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sarılıp Yılana-->
+        <scene sceneID="UNc-Uq-k2b">
+            <objects>
+                <viewController id="crp-Xg-o8P" customClass="GameViewController" customModule="DogruYanlis" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cOG-aI-zZM"/>
+                        <viewControllerLayoutGuide type="bottom" id="gHe-6c-9pL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Hf-x4-csP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZA-F6-GVG">
+                                <rect key="frame" x="20" y="617" width="112" height="30"/>
+                                <state key="normal" title="Add Claims"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="makeYourClaims" id="s8D-B4-oKn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J07-o8-EeN">
+                                <rect key="frame" x="274" y="617" width="81" height="30"/>
+                                <state key="normal" title="Show Claim"/>
+                                <connections>
+                                    <action selector="showClaim:" destination="crp-Xg-o8P" eventType="touchUpInside" id="E5k-w4-bcW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome to Sarılıp Yılana" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hl7-oU-gyD">
+                                <rect key="frame" x="20" y="100" width="335" height="147"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="147" id="kXs-me-qsR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyA-Wi-dtg">
+                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <state key="normal" title="Reveal"/>
+                                <connections>
+                                    <action selector="reveal:" destination="crp-Xg-o8P" eventType="touchUpInside" id="gEG-tF-qj4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsE-cq-NnM">
+                                <rect key="frame" x="167" y="412" width="41" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remaining Claims" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G07-Ju-6wk">
+                                <rect key="frame" x="119" y="378" width="136" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzd-Wo-N0f">
+                                <rect key="frame" x="148" y="221" width="188" height="25.5"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRL-t6-tjo">
+                                <rect key="frame" x="244" y="255" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uyA-Wi-dtg" firstAttribute="centerX" secondItem="7Hf-x4-csP" secondAttribute="centerX" id="3hL-gp-bh0"/>
+                            <constraint firstItem="uyA-Wi-dtg" firstAttribute="leading" secondItem="XZA-F6-GVG" secondAttribute="trailing" constant="32" id="5sd-6X-nWV"/>
+                            <constraint firstItem="XZA-F6-GVG" firstAttribute="baseline" secondItem="uyA-Wi-dtg" secondAttribute="baseline" id="6Yw-0K-rg7"/>
+                            <constraint firstItem="Hl7-oU-gyD" firstAttribute="leading" secondItem="XZA-F6-GVG" secondAttribute="leading" id="7FT-PT-wY9"/>
+                            <constraint firstItem="Hl7-oU-gyD" firstAttribute="trailing" secondItem="J07-o8-EeN" secondAttribute="trailing" id="EL3-9C-zpO"/>
+                            <constraint firstItem="uyA-Wi-dtg" firstAttribute="baseline" secondItem="J07-o8-EeN" secondAttribute="baseline" id="QI9-95-TyW"/>
+                            <constraint firstItem="Hl7-oU-gyD" firstAttribute="centerX" secondItem="uyA-Wi-dtg" secondAttribute="centerX" id="XE1-8O-3Lc"/>
+                            <constraint firstItem="Hl7-oU-gyD" firstAttribute="top" secondItem="cOG-aI-zZM" secondAttribute="bottom" id="ce3-kh-T5s"/>
+                            <constraint firstItem="J07-o8-EeN" firstAttribute="leading" secondItem="uyA-Wi-dtg" secondAttribute="trailing" constant="64" id="rtd-lf-k2I"/>
+                            <constraint firstAttribute="bottom" secondItem="XZA-F6-GVG" secondAttribute="bottom" constant="20" symbolic="YES" id="w1P-7z-yOq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sarılıp Yılana" id="do9-sa-4Jk"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="claimLabel" destination="Hl7-oU-gyD" id="Iea-Vz-LT9"/>
+                        <outlet property="claimOwner" destination="Bzd-Wo-N0f" id="pWJ-qq-uUJ"/>
+                        <outlet property="claimTruth" destination="VRL-t6-tjo" id="1wC-g0-ZXZ"/>
+                        <outlet property="remainingClaims" destination="rsE-cq-NnM" id="I5a-Ps-PmL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SvD-hI-n6S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="741.5" y="-148.5"/>
+        </scene>
+        <!--Make Your Claims-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LaunchViewController" customModule="DogruYanlis" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Claim" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iqg-0x-23g">
+                                <rect key="frame" x="20" y="266" width="282" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ru0-bL-cX8">
+                                <rect key="frame" x="310" y="466" width="51" height="31"/>
+                            </switch>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Second Claim" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JYj-kc-R0A">
+                                <rect key="frame" x="20" y="368" width="282" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQM-mq-TnQ">
+                                <rect key="frame" x="310" y="367" width="51" height="31"/>
+                            </switch>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Third Claim" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WCa-6M-dRX">
+                                <rect key="frame" x="20" y="467" width="282" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NR7-En-owd">
+                                <rect key="frame" x="310" y="265" width="51" height="31"/>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-yc-zVB">
+                                <rect key="frame" x="151" y="568" width="73" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ojo-0h-AhK"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fkz-dF-7vY">
+                                <rect key="frame" x="126" y="155" width="122" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Make Your Claims" id="ssv-VK-S0s"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="playerName" destination="fkz-dF-7vY" id="Hhk-Hu-2OM"/>
+                        <outlet property="sentenceOne" destination="Iqg-0x-23g" id="zqo-FX-5Sm"/>
+                        <outlet property="sentenceThree" destination="WCa-6M-dRX" id="hxL-nM-3Ha"/>
+                        <outlet property="sentenceTwo" destination="JYj-kc-R0A" id="4eA-c2-zhY"/>
+                        <outlet property="truthOne" destination="Ru0-bL-cX8" id="hkT-KL-EzV"/>
+                        <outlet property="truthThree" destination="NR7-En-owd" id="00f-hp-UX2"/>
+                        <outlet property="truthTwo" destination="kQM-mq-TnQ" id="siD-hA-93s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="741.5" y="729.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TMN-Y9-R9x">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Vt-51-M8y" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jkX-p0-HQ8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="crp-Xg-o8P" kind="relationship" relationship="rootViewController" id="OYz-s9-a5I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Gv-TM-pRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="124" y="-148"/>
         </scene>
     </scenes>
 </document>
