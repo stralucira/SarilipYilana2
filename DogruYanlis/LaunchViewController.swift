@@ -30,6 +30,7 @@ class LaunchViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
@@ -37,7 +38,7 @@ class LaunchViewController: UIViewController {
     }
     
     var data = GameData()
-
+    
     weak var delegate: DataEnteredDelegate? = nil
     
     @IBOutlet weak var playerName: UITextField!
