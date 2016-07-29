@@ -7,10 +7,24 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GameViewController: UIViewController, DataEnteredDelegate {
 
     var data = GameData()
+    
+    var sarilipSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sarilip", ofType: "m4a")!)
+    var audioPlayer = AVAudioPlayer()
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        try! audioPlayer = AVAudioPlayer(contentsOfURL: sarilipSound, fileTypeHint: "m4a")
+        audioPlayer.prepareToPlay()
+
+    }
+
     
     var claimOwnerString: String?
     
@@ -59,6 +73,9 @@ class GameViewController: UIViewController, DataEnteredDelegate {
         claimTruthBool = claimToBeShowed.truthfulness
         
         remainingClaimValue = data.claimCount
+            
+        audioPlayer.play()
+            
         }
     }
     

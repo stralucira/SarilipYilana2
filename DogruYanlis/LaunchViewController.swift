@@ -49,10 +49,8 @@ class LaunchViewController: UIViewController {
     @IBOutlet weak var sentenceTwo: UITextField!
     @IBOutlet weak var truthTwo: UISwitch!
     
-    
     @IBOutlet weak var sentenceThree: UITextField!
     @IBOutlet weak var truthThree: UISwitch!
-    
     
     @IBAction func save(sender: UIButton) {
     
