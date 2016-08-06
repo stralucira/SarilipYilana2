@@ -13,6 +13,7 @@ class GameViewController: UIViewController, DataEnteredDelegate {
 
     var data = GameData()
     
+    //Sound Related
     var sarilipSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sarilip", ofType: "m4a")!)
     var audioPlayer = AVAudioPlayer()
     
@@ -22,10 +23,11 @@ class GameViewController: UIViewController, DataEnteredDelegate {
         
         try! audioPlayer = AVAudioPlayer(contentsOfURL: sarilipSound, fileTypeHint: "m4a")
         audioPlayer.prepareToPlay()
+        
+        anilButton.enabled = false
 
     }
 
-    
     var claimOwnerString: String?
     
     var claimTruthBool: Bool?
@@ -33,6 +35,7 @@ class GameViewController: UIViewController, DataEnteredDelegate {
     @IBOutlet weak var remainingClaims: UILabel!
     
     private var remainingClaimValue: Int {
+        
         get{
             return Int(remainingClaims.text!)!
         }
@@ -41,16 +44,20 @@ class GameViewController: UIViewController, DataEnteredDelegate {
         }
     }
 
+    @IBOutlet weak var anilButton: UIButton!
     @IBOutlet weak var claimTruth: UILabel!
     @IBOutlet weak var claimOwner: UILabel!
     @IBOutlet weak var claimLabel: UILabel!
+    @IBOutlet weak var showClaimButton: UIButton!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "makeYourClaims" {
             let secondViewController = segue.destinationViewController as! LaunchViewController
             secondViewController.delegate = self
         }
+        
     }
+
 
     func userDidEnterInformation(claim: Claim) {
         
@@ -61,6 +68,7 @@ class GameViewController: UIViewController, DataEnteredDelegate {
     }
     
     @IBAction func showClaim(sender: UIButton) {
+        
         if (data.claimCount != 0 ) {
         claimOwner.text = nil
         claimTruth.text = nil
@@ -76,10 +84,15 @@ class GameViewController: UIViewController, DataEnteredDelegate {
             
         audioPlayer.play()
             
+        anilButton.enabled = true
+        showClaimButton.enabled = false
         }
+        
+        
     }
     
     @IBAction func reveal(sender: AnyObject) {
+        
         if let temp = claimOwnerString{
             claimOwner.text = " - \(temp)"
         }
@@ -87,10 +100,15 @@ class GameViewController: UIViewController, DataEnteredDelegate {
         if let tempBool = claimTruthBool {
             
             if (tempBool){
+                claimTruth.textColor = UIColor.greenColor()
                 claimTruth.text = "True"
+                
             } else {
+                claimTruth.textColor = UIColor.redColor()
                 claimTruth.text = "False"
             }
         }
+        showClaimButton.enabled = true
+        anilButton.enabled = false
     }
 }

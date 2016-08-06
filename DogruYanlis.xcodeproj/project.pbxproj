@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C26C40C1D56249400535A47 /* ScoreboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C26C40B1D56249400535A47 /* ScoreboardViewController.swift */; };
 		7C63413F1D44EE8400137383 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C63413E1D44EE8400137383 /* AppDelegate.swift */; };
 		7C6341441D44EE8400137383 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6341421D44EE8400137383 /* Main.storyboard */; };
 		7C6341461D44EE8400137383 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6341451D44EE8400137383 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C26C40B1D56249400535A47 /* ScoreboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreboardViewController.swift; sourceTree = "<group>"; };
 		7C63413B1D44EE8400137383 /* DogruYanlis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogruYanlis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C63413E1D44EE8400137383 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C6341431D44EE8400137383 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -41,6 +43,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C26C40A1D56247C00535A47 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7C63413E1D44EE8400137383 /* AppDelegate.swift */,
+				7C6341451D44EE8400137383 /* Assets.xcassets */,
+				7CC8735E1D4AF47600E4EAFB /* sarilip.m4a */,
+				7C6341471D44EE8400137383 /* LaunchScreen.storyboard */,
+				7C63414A1D44EE8400137383 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		7C6341321D44EE8400137383 = {
 			isa = PBXGroup;
 			children = (
@@ -60,15 +74,12 @@
 		7C63413D1D44EE8400137383 /* DogruYanlis */ = {
 			isa = PBXGroup;
 			children = (
-				7C63413E1D44EE8400137383 /* AppDelegate.swift */,
+				7C26C40A1D56247C00535A47 /* Supporting Files */,
 				7C846DD11D458C5000A05DA3 /* GameViewController.swift */,
 				7C6341501D44F0EB00137383 /* LaunchViewController.swift */,
+				7C26C40B1D56249400535A47 /* ScoreboardViewController.swift */,
 				7C6341521D44FA2F00137383 /* GameData.swift */,
 				7C6341421D44EE8400137383 /* Main.storyboard */,
-				7C6341451D44EE8400137383 /* Assets.xcassets */,
-				7CC8735E1D4AF47600E4EAFB /* sarilip.m4a */,
-				7C6341471D44EE8400137383 /* LaunchScreen.storyboard */,
-				7C63414A1D44EE8400137383 /* Info.plist */,
 			);
 			path = DogruYanlis;
 			sourceTree = "<group>";
@@ -150,6 +161,7 @@
 				7C63413F1D44EE8400137383 /* AppDelegate.swift in Sources */,
 				7C6341531D44FA2F00137383 /* GameData.swift in Sources */,
 				7C6341511D44F0EB00137383 /* LaunchViewController.swift in Sources */,
+				7C26C40C1D56249400535A47 /* ScoreboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,13 +12,6 @@ protocol DataEnteredDelegate: class {
     func userDidEnterInformation(claim: Claim)
 }
 
-struct Claim {
-    
-    var name: String
-    var sentence: String
-    var truthfulness: Bool
-    
-}
 
 class LaunchViewController: UIViewController {
 

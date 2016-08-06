@@ -9,10 +9,22 @@
 import Foundation
 import UIKit
 
+struct Claim {
+    
+    var name: String
+    var sentence: String
+    var truthfulness: Bool
+    
+}
+
 class GameData {
     
     var claimCount = 0
     var claimList: [Claim] = []
+    
+    var scores: [String: Int] = [:]
+    
+    
     
     struct Claim {
     
@@ -47,5 +59,24 @@ class GameData {
         return Int(arc4random_uniform(UInt32(claimCount)))
     }
     
-
+    func populateScoresArrayWithNames(claimList: [Claim]){
+        
+        for claim in claimList {
+            scores[claim.name] = 0
+        }
+    }
+    
+    func addPoint(name: String){
+        if let score = scores[name]{
+            scores[name] = score + 1
+        }
+    }
+    
+    func addYilanPoint(name: String){
+        if let score = scores[name]{
+            scores[name] = score + 2
+        }
+    }
+    
+    
 }

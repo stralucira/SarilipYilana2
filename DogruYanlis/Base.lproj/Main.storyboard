@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7Vt-51-M8y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7Vt-51-M8y">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -25,14 +25,8 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="makeYourClaims" id="s8D-B4-oKn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Sarılıp Yılana" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hl7-oU-gyD">
-                                <rect key="frame" x="16" y="100" width="343" height="147"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyA-Wi-dtg">
-                                <rect key="frame" x="148" y="576" width="78" height="79"/>
+                                <rect key="frame" x="148.5" y="576" width="78" height="79"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="79" id="URf-f4-Moq"/>
                                     <constraint firstAttribute="width" constant="78" id="svA-uH-smf"/>
@@ -52,8 +46,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining Claims" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G07-Ju-6wk">
-                                <rect key="frame" x="119" y="378" width="136" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Claims Left:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G07-Ju-6wk">
+                                <rect key="frame" x="142.5" y="378" width="91" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -84,8 +78,14 @@
                                     <action selector="showClaim:" destination="crp-Xg-o8P" eventType="touchUpInside" id="E5k-w4-bcW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Sarılıp Yılana" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hl7-oU-gyD">
+                                <rect key="frame" x="16" y="100" width="343" height="147"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="J07-o8-EeN" firstAttribute="leading" secondItem="uyA-Wi-dtg" secondAttribute="trailing" constant="48" id="A1l-qm-p8y"/>
                             <constraint firstItem="gHe-6c-9pL" firstAttribute="top" secondItem="XZA-F6-GVG" secondAttribute="bottom" constant="20" id="AKw-UE-75y"/>
@@ -126,13 +126,17 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Sarılıp Yılana" id="do9-sa-4Jk"/>
+                    <navigationItem key="navigationItem" title="Sarılıp Yılana" id="do9-sa-4Jk">
+                        <barButtonItem key="rightBarButtonItem" image="leaderboard" id="EOv-qc-DGU"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="anilButton" destination="uyA-Wi-dtg" id="pkh-Hz-mcE"/>
                         <outlet property="claimLabel" destination="Hl7-oU-gyD" id="Iea-Vz-LT9"/>
                         <outlet property="claimOwner" destination="Bzd-Wo-N0f" id="pWJ-qq-uUJ"/>
                         <outlet property="claimTruth" destination="VRL-t6-tjo" id="1wC-g0-ZXZ"/>
                         <outlet property="remainingClaims" destination="rsE-cq-NnM" id="I5a-Ps-PmL"/>
+                        <outlet property="showClaimButton" destination="J07-o8-EeN" id="PXs-M9-GZ4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SvD-hI-n6S" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,6 +192,10 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ru0-bL-cX8">
                                 <rect key="frame" x="310" y="169" width="51" height="31"/>
                             </switch>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tf" translatesAutoresizingMaskIntoConstraints="NO" id="ng1-MP-feG">
+                                <rect key="frame" x="310" y="112" width="49" height="49"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -229,5 +237,7 @@
     </scenes>
     <resources>
         <image name="anil" width="408" height="482"/>
+        <image name="leaderboard" width="39" height="39"/>
+        <image name="tf" width="1024" height="1024"/>
     </resources>
 </document>
