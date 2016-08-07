@@ -24,8 +24,6 @@ class GameData {
     
     var scores: [String: Int] = [:]
     
-    
-    
     struct Claim {
     
         var name: String
@@ -33,7 +31,6 @@ class GameData {
         var truthfulness: Bool
         
     }
-    
     
     func addClaim(senderName: String, sentence: String, truthfulness: Bool){
         
@@ -76,6 +73,16 @@ class GameData {
         if let score = scores[name]{
             scores[name] = score + 2
         }
+    }
+    
+    func addPlayer(name: String) {
+        scores[name] = 0
+    }
+    
+    func clear() {
+        scores = [:]
+        claimList = []
+        claimCount = 0
     }
     
     

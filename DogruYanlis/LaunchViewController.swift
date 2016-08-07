@@ -9,9 +9,10 @@
 import UIKit
 
 protocol DataEnteredDelegate: class {
+    
     func userDidEnterInformation(claim: Claim)
-}
 
+}
 
 class LaunchViewController: UIViewController {
 
@@ -23,6 +24,10 @@ class LaunchViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    var successfulClaims: Int = 0
+    var successMessage = ""
+    var titleMessage = ""
+    
     
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
@@ -30,7 +35,6 @@ class LaunchViewController: UIViewController {
         view.endEditing(true)
     }
     
-    var data = GameData()
     
     weak var delegate: DataEnteredDelegate? = nil
     
@@ -47,22 +51,60 @@ class LaunchViewController: UIViewController {
     
     @IBAction func save(sender: UIButton) {
     
-        if (sentenceOne.text != "") {
-        delegate?.userDidEnterInformation(Claim(name: playerName.text!, sentence: sentenceOne.text!, truthfulness: truthOne.on))
-        }
+        if (playerName.text != "") && ((sentenceOne.text !=  "") || (sentenceTwo.text !=  "") || (sentenceThree.text !=  "")){
+            
+            if (sentenceOne.text != "") {
+                delegate?.userDidEnterInformation(Claim(name: playerName.text!, sentence: sentenceOne.text!, truthfulness: truthOne.on))
+                successfulClaims += 1
+            }
         
-        if (sentenceTwo.text != "") {
-        delegate?.userDidEnterInformation(Claim(name: playerName.text!, sentence: sentenceTwo.text!, truthfulness: truthTwo.on))
-        }
+            if (sentenceTwo.text != "") {
+                delegate?.userDidEnterInformation(Claim(name: playerName.text!, sentence: sentenceTwo.text!, truthfulness: truthTwo.on))
+                successfulClaims += 1
+            }
         
-        if (sentenceThree.text != "") {
-        delegate?.userDidEnterInformation(Claim(name: playerName.text!, sentence: sentenceThree.text!, truthfulness: truthThree.on))
-        }
+            if (sentenceThree.text != "") {
+                delegate?.userDidEnterInformation(Claim(name: playerName.text!, sentence: sentenceThree.text!, truthfulness: truthThree.on))
+                successfulClaims += 1
+            }
+            
+            if ( successfulClaims == 1 ) {
+                successMessage = "Your 1 claim has been submitted."
+                titleMessage = "Gratz \(playerName.text!)!"
+            } else {
+                successMessage = "Your \(successfulClaims) claims has been submitted."
+                titleMessage = "Gratz \(playerName.text!)!"
+            }
+            
+            let successAlertController = UIAlertController(title: titleMessage, message:
+                successMessage, preferredStyle: UIAlertControllerStyle.Alert)
+            successAlertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
         
-        clear()
+            self.presentViewController(successAlertController, animated: true, completion: nil)
+        
+            clear()
+            
+        } else if (playerName.text == "") {
+            
+            let nameNotEnteredAlertController = UIAlertController(title: "", message:
+                "Please type your name before submitting!", preferredStyle: UIAlertControllerStyle.Alert)
+            nameNotEnteredAlertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(nameNotEnteredAlertController, animated: true, completion: nil)
+            
+        } else if (((sentenceOne.text == "") && (sentenceTwo.text == "")) && (sentenceThree.text == "")) {
+            
+            let claimNotEnteredAlertController = UIAlertController(title: "", message:
+                "You have not entered any claims!", preferredStyle: UIAlertControllerStyle.Alert)
+            claimNotEnteredAlertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(claimNotEnteredAlertController, animated: true, completion: nil)
+            
+        }
         
     }
     
+    //Clear function
     func clear() {
         
         playerName.text = nil
@@ -73,6 +115,8 @@ class LaunchViewController: UIViewController {
         truthOne.on = true
         truthTwo.on = true
         truthThree.on = true
+        
+        successfulClaims = 0
         
     }
     

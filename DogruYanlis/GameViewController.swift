@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class GameViewController: UIViewController, DataEnteredDelegate {
+class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDelegate {
 
     var data = GameData()
     
@@ -54,17 +54,35 @@ class GameViewController: UIViewController, DataEnteredDelegate {
         if segue.identifier == "makeYourClaims" {
             let secondViewController = segue.destinationViewController as! LaunchViewController
             secondViewController.delegate = self
+        } else if segue.identifier == "showScoreboard" {
+            let second = segue.destinationViewController as! ScoreboardViewController
+            second.delegate = self
+            second.scoreData = data.scores
         }
-        
     }
 
-
+    
+    @IBAction func showLeaderboardButton(sender: UIBarButtonItem) {
+    
+    }
+    //Used for DataEnteredDelegate
     func userDidEnterInformation(claim: Claim) {
         
         data.addClaim(claim.name, sentence: claim.sentence, truthfulness: claim.truthfulness)
         
+        data.addPlayer(claim.name)
+        
         remainingClaimValue = data.claimCount
         
+    }
+    
+    func increaseUserScore(user: String, byScore score: Int){
+        
+        if (score == 1) {
+            data.addPoint(user)
+        } else if (score == 2) {
+            data.addYilanPoint(user)
+        }
     }
     
     @IBAction func showClaim(sender: UIButton) {

@@ -46,8 +46,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Claims Left:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G07-Ju-6wk">
-                                <rect key="frame" x="142.5" y="378" width="91" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Claims Left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G07-Ju-6wk">
+                                <rect key="frame" x="145.5" y="378" width="86" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -127,7 +127,12 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Sarılıp Yılana" id="do9-sa-4Jk">
-                        <barButtonItem key="rightBarButtonItem" image="leaderboard" id="EOv-qc-DGU"/>
+                        <barButtonItem key="rightBarButtonItem" image="leaderboard" id="EOv-qc-DGU">
+                            <connections>
+                                <action selector="showLeaderboardButton:" destination="crp-Xg-o8P" id="vJy-2I-fIu"/>
+                                <segue destination="xJc-bA-oRY" kind="show" identifier="showScoreboard" id="0q7-Kr-PiV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -142,6 +147,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SvD-hI-n6S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="741.5" y="-148.5"/>
+        </scene>
+        <!--Leaderboard-->
+        <scene sceneID="Xg3-X1-7QH">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="xJc-bA-oRY" customClass="ScoreboardViewController" customModule="DogruYanlis" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FAu-yL-R4X"/>
+                        <viewControllerLayoutGuide type="bottom" id="8ln-Mi-82Y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v8B-M5-5jo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fZ9-7k-3QJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <color key="sectionIndexColor" red="0.73745256059999997" green="0.90404040399999996" blue="0.57093571190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.8980392157" green="0.66274509800000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.62745098040000002" green="0.37254901959999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fZ9-7k-3QJ" firstAttribute="bottom" secondItem="8ln-Mi-82Y" secondAttribute="top" id="As8-dF-tOB"/>
+                            <constraint firstAttribute="trailing" secondItem="fZ9-7k-3QJ" secondAttribute="trailing" id="euH-Z4-w4X"/>
+                            <constraint firstItem="fZ9-7k-3QJ" firstAttribute="top" secondItem="FAu-yL-R4X" secondAttribute="bottom" id="hgP-v6-VLl"/>
+                            <constraint firstItem="fZ9-7k-3QJ" firstAttribute="leading" secondItem="v8B-M5-5jo" secondAttribute="leading" id="xDt-8x-TXl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Leaderboard" id="EMP-T1-LLZ"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="leaderboardTable" destination="fZ9-7k-3QJ" id="R8V-Sn-SHS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ce0-CN-ok0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1337.5" y="-148.5"/>
         </scene>
         <!--Make Your Claims-->
         <scene sceneID="tne-QT-ifu">
@@ -181,7 +225,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-yc-zVB">
                                 <rect key="frame" x="151" y="310" width="73" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ojo-0h-AhK"/>
                                 </connections>
