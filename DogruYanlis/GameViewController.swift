@@ -50,6 +50,27 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
     @IBOutlet weak var claimLabel: UILabel!
     @IBOutlet weak var showClaimButton: UIButton!
     
+    @IBOutlet weak var newGameButton: UIBarButtonItem!
+    
+    @IBAction func newGame(sender: UIBarButtonItem) {
+        
+        let newGameAlert = UIAlertController(title: "New Game", message: "All your data will be lost", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        newGameAlert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: {(action: UIAlertAction!) in
+        
+            self.data.clear()
+            self.clearDisplays()
+            
+        }))
+        newGameAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: {(action: UIAlertAction!) in
+        
+        }))
+        
+        presentViewController(newGameAlert, animated: true, completion: nil)
+        
+    }
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "makeYourClaims" {
             let secondViewController = segue.destinationViewController as! LaunchViewController
@@ -82,6 +103,11 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
             data.addPoint(user)
         } else if (score == 2) {
             data.addYilanPoint(user)
+        } else if (score == -1) {
+            
+            if (data.scores[user] > 0 ){
+                data.subtractPoint(user)
+            }
         }
     }
     
@@ -129,4 +155,17 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
         showClaimButton.enabled = true
         anilButton.enabled = false
     }
+    
+    func clearDisplays() {
+        remainingClaimValue = 0
+        claimTruth.text = ""
+        claimLabel.text = "Welcome to Sarılıp Yılana"
+        claimOwner.text = ""
+        claimOwnerString = nil
+        claimTruthBool = nil
+        
+        anilButton.enabled = false
+        showClaimButton.enabled = true
+    }
+    
 }

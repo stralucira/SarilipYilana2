@@ -14,14 +14,39 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2016 basaroguz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ug-St-oog">
+                                <rect key="frame" x="76" y="626" width="222" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="snake" translatesAutoresizingMaskIntoConstraints="NO" id="uIK-2c-nw2">
+                                <rect key="frame" x="137" y="284" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="319-Dg-6fE"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uIK-2c-nw2" firstAttribute="centerX" secondItem="7Ug-St-oog" secondAttribute="centerX" id="6N0-U7-ahi"/>
+                            <constraint firstItem="uIK-2c-nw2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="S7J-eh-Htb"/>
+                            <constraint firstItem="uIK-2c-nw2" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="264" id="Xul-U2-y9z"/>
+                            <constraint firstItem="uIK-2c-nw2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dzv-xX-PYn"/>
+                            <constraint firstAttribute="bottom" secondItem="7Ug-St-oog" secondAttribute="bottom" constant="20" symbolic="YES" id="zBj-zb-EEW"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.5" y="374.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="snake" width="256" height="256"/>
+    </resources>
 </document>

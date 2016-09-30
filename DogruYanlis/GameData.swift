@@ -24,6 +24,12 @@ class GameData {
     
     var scores: [String: Int] = [:]
     
+    var players: [String] {
+        get{
+            return Array(scores.keys)
+        }
+    }
+    
     struct Claim {
     
         var name: String
@@ -74,6 +80,13 @@ class GameData {
             scores[name] = score + 2
         }
     }
+    
+    func subtractPoint(name: String){
+        if let score = scores[name]{
+            scores[name] = score - 1
+        }
+    }
+    
     
     func addPlayer(name: String) {
         scores[name] = 0
