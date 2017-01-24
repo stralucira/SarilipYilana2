@@ -26,9 +26,9 @@ class LaunchViewController: UIViewController {
     let mySwitch3 = SevenSwitch(frame: CGRectZero)
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        
-        
+    
         mySwitch.frame = CGRectMake(290, 150, 80, 33)
         mySwitch2.frame = CGRectMake(290, 201, 80, 33)
         mySwitch3.frame = CGRectMake(290, 252, 80, 33)
@@ -38,7 +38,6 @@ class LaunchViewController: UIViewController {
         mySwitch.addTarget(self, action: #selector(LaunchViewController.switchOne(_:)), forControlEvents: UIControlEvents.ValueChanged)
         mySwitch2.addTarget(self, action: #selector(LaunchViewController.switchTwo(_:)), forControlEvents: UIControlEvents.ValueChanged)
         mySwitch3.addTarget(self, action: #selector(LaunchViewController.switchThree(_:)), forControlEvents: UIControlEvents.ValueChanged)
-
 
         self.view.addSubview(mySwitch)
         self.view.addSubview(mySwitch2)
@@ -75,7 +74,6 @@ class LaunchViewController: UIViewController {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-    
     
     weak var delegate: DataEnteredDelegate? = nil
     
@@ -118,7 +116,6 @@ class LaunchViewController: UIViewController {
         }
         
     }
-    
     
     
     @IBAction func save(sender: UIButton) {

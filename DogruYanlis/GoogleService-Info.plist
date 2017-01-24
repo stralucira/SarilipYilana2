@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>628996841243-21n8qgedeih9t6aoitrcvd6cl263a0vm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.628996841243-21n8qgedeih9t6aoitrcvd6cl263a0vm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC1AKDIt-4KPMOAxSjtIps_kSsbHmBEJ6Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>628996841243</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.basaroguz.DogruYanlis</string>
+	<key>PROJECT_ID</key>
+	<string>sarilip-yilana</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sarilip-yilana.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:628996841243:ios:708e045faa4867cb</string>
+	<key>DATABASE_URL</key>
+	<string>https://sarilip-yilana.firebaseio.com</string>
+</dict>
+</plist>

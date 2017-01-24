@@ -8,24 +8,29 @@
 
 import UIKit
 import AVFoundation
+import Firebase
 
 class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDelegate {
 
     var data = GameData()
     
+    var ref: FIRDatabaseReference!
+    
     //Sound Related
-    var sarilipSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sarilip", ofType: "m4a")!)
+    //var sarilipSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sarilip", ofType: "m4a")!)
     var audioPlayer = AVAudioPlayer()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        let sarilipSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sarilip", ofType: "m4a")!)
         try! audioPlayer = AVAudioPlayer(contentsOfURL: sarilipSound, fileTypeHint: "m4a")
         audioPlayer.prepareToPlay()
-        
+    
         anilButton.enabled = false
 
+        ref = FIRDatabase.database().reference()
     }
 
     var claimOwnerString: String?
@@ -67,6 +72,8 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
         }))
         
         presentViewController(newGameAlert, animated: true, completion: nil)
+        
+        self.ref.child("sessions").setValue("merhaba")
         
     }
     
