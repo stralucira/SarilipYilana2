@@ -13,8 +13,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
     var ref: FIRDatabaseReference!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
