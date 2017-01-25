@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7Vt-51-M8y">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,18 +19,18 @@
                         <viewControllerLayoutGuide type="bottom" id="gHe-6c-9pL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7Hf-x4-csP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZA-F6-GVG">
-                                <rect key="frame" x="16" y="518" width="78" height="30"/>
+                                <rect key="frame" x="16" y="617" width="78" height="30"/>
                                 <state key="normal" title="Add Claims"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="makeYourClaims" id="s8D-B4-oKn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyA-Wi-dtg">
-                                <rect key="frame" x="121.5" y="477" width="78" height="79"/>
+                                <rect key="frame" x="149" y="576" width="78" height="79"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="79" id="URf-f4-Moq"/>
                                     <constraint firstAttribute="width" constant="78" id="svA-uH-smf"/>
@@ -41,7 +41,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsE-cq-NnM">
-                                <rect key="frame" x="139.5" y="313" width="41" height="39"/>
+                                <rect key="frame" x="167" y="412" width="41" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="9mu-aa-0Yf"/>
                                     <constraint firstAttribute="width" constant="41" id="Z3r-tl-3xZ"/>
@@ -66,20 +66,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J07-o8-EeN">
-                                <rect key="frame" x="223" y="518" width="81" height="30"/>
+                                <rect key="frame" x="278" y="617" width="81" height="30"/>
                                 <state key="normal" title="Show Claim"/>
                                 <connections>
                                     <action selector="showClaim:" destination="crp-Xg-o8P" eventType="touchUpInside" id="E5k-w4-bcW"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Sarılıp Yılana" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hl7-oU-gyD">
-                                <rect key="frame" x="16" y="100" width="288" height="147"/>
+                                <rect key="frame" x="16" y="100" width="343" height="147"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRL-t6-tjo">
-                                <rect key="frame" x="189" y="255" width="92" height="21"/>
+                                <rect key="frame" x="244" y="255" width="92" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="UuZ-Kl-hj9"/>
                                     <constraint firstAttribute="width" constant="92" id="nrK-ra-9bN"/>
@@ -131,7 +131,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Sarılıp Yılana" id="do9-sa-4Jk">
-                        <barButtonItem key="leftBarButtonItem" image="iconsnake" id="hM9-mb-fuX">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="iconsnake" id="hM9-mb-fuX">
                             <connections>
                                 <action selector="newGame:" destination="crp-Xg-o8P" id="B7K-h3-dak"/>
                             </connections>
@@ -166,11 +166,11 @@
                         <viewControllerLayoutGuide type="bottom" id="8ln-Mi-82Y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="v8B-M5-5jo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="center" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fZ9-7k-3QJ">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <color key="sectionIndexColor" red="0.73745256059999997" green="0.90404040399999996" blue="0.57093571190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -204,7 +204,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Claim" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Iqg-0x-23g">
@@ -225,15 +225,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-yc-zVB">
-                                <rect key="frame" x="151" y="291" width="73" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Submit"/>
-                                <connections>
-                                    <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ojo-0h-AhK"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tf" translatesAutoresizingMaskIntoConstraints="NO" id="ng1-MP-feG">
                                 <rect key="frame" x="310" y="93" width="49" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -245,8 +236,28 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-yc-zVB">
+                                <rect key="frame" x="0.0" y="619" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.070588235294117646" green="0.52941176470588236" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2eu-iJ-pfG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ojo-0h-AhK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="R9a-yc-zVB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TUR-dg-cAd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R9a-yc-zVB" secondAttribute="trailing" constant="-16" id="izn-uh-JnM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="R9a-yc-zVB" secondAttribute="bottom" id="oBR-fU-ifA"/>
+                            <constraint firstItem="R9a-yc-zVB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="uZh-gA-tN9"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Make Your Claims" id="ssv-VK-S0s"/>
                     <connections>
@@ -258,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="740" y="709"/>
+            <point key="canvasLocation" x="740" y="707.49625187406298"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TMN-Y9-R9x">

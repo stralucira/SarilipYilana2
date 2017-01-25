@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import Firebase
 
+
 class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDelegate {
 
     var data = GameData()
@@ -59,14 +60,24 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
     
     @IBAction func newGame(sender: UIBarButtonItem) {
         
-        let newGameAlert = UIAlertController(title: "New Game", message: "All your data will be lost", preferredStyle: UIAlertControllerStyle.Alert)
+        let newGameAlert = UIAlertController(title: "New Game", message: "Your current game data will be deleted.", preferredStyle: UIAlertControllerStyle.Alert)
         
-        newGameAlert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: {(action: UIAlertAction!) in
+        newGameAlert.addAction(UIAlertAction(title: "New Game", style: .Default, handler: {(action: UIAlertAction!) in
         
             self.data.clear()
             self.clearDisplays()
             
+            let textField = newGameAlert.textFields![0] as UITextField
+            self.data.gameID = textField.text!
+            
+            self.title = self.data.gameID
+            
         }))
+        
+        newGameAlert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = "Name of your game!"
+        })
+        
         newGameAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: {(action: UIAlertAction!) in
         
         }))
@@ -93,6 +104,7 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
     @IBAction func showLeaderboardButton(sender: UIBarButtonItem) {
     
     }
+    
     //Used for DataEnteredDelegate
     func userDidEnterInformation(claim: Claim) {
         

@@ -19,6 +19,8 @@ struct Claim {
 
 class GameData {
     
+    var gameID = ""
+    
     var claimCount = 0
     var claimList: [Claim] = []
     

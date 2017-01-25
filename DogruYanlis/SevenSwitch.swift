@@ -70,7 +70,7 @@ import QuartzCore
      *   Sets the background color that shows when the switch is on.
      *   Defaults to green.
      */
-    @IBInspectable public var onTintColor: UIColor = UIColor(red: 0.3, green: 0.85, blue: 0.39, alpha: 1) {
+    @IBInspectable public var onTintColor: UIColor = UIColor( red: 18/255, green: 136/255, blue: 2/255, alpha: 1.0 ) {
         willSet {
             if self.on && !self.tracking {
                 backgroundView.backgroundColor = newValue
