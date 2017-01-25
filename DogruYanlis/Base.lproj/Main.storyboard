@@ -24,7 +24,9 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZA-F6-GVG">
                                 <rect key="frame" x="16" y="617" width="78" height="30"/>
-                                <state key="normal" title="Add Claims"/>
+                                <state key="normal" title="Add Claims">
+                                    <color key="titleColor" red="0.086274509803921567" green="0.5725490196078431" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="makeYourClaims" id="s8D-B4-oKn"/>
                                 </connections>
@@ -67,7 +69,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J07-o8-EeN">
                                 <rect key="frame" x="278" y="617" width="81" height="30"/>
-                                <state key="normal" title="Show Claim"/>
+                                <state key="normal" title="Show Claim">
+                                    <color key="titleColor" red="0.086274509799999996" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="showClaim:" destination="crp-Xg-o8P" eventType="touchUpInside" id="E5k-w4-bcW"/>
                                 </connections>
@@ -89,7 +93,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="J07-o8-EeN" firstAttribute="leading" secondItem="uyA-Wi-dtg" secondAttribute="trailing" constant="48" id="A1l-qm-p8y"/>
                             <constraint firstItem="gHe-6c-9pL" firstAttribute="top" secondItem="XZA-F6-GVG" secondAttribute="bottom" constant="20" id="AKw-UE-75y"/>
@@ -132,11 +136,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sarılıp Yılana" id="do9-sa-4Jk">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="iconsnake" id="hM9-mb-fuX">
+                            <color key="tintColor" red="0.086274509799999996" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="newGame:" destination="crp-Xg-o8P" id="B7K-h3-dak"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="leaderboard" id="EOv-qc-DGU">
+                            <color key="tintColor" red="0.086274509799999996" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="showLeaderboardButton:" destination="crp-Xg-o8P" id="vJy-2I-fIu"/>
                                 <segue destination="xJc-bA-oRY" kind="show" identifier="showScoreboard" id="0q7-Kr-PiV"/>
@@ -305,7 +311,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gZG-Ny-Kxu">
                                 <rect key="frame" x="0.0" y="427" width="375" height="240"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sarılıp Yılana" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZa-FK-4Wa">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Sarılıp Yılana" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZa-FK-4Wa">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="1UF-Cq-NPT"/>
@@ -314,7 +320,7 @@
                                         <color key="textColor" red="0.070588235294117646" green="0.52941176470588236" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="0.082352941176470587" green="0.53725490196078429" blue="0.043137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter Game Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uci-DR-1CG">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Game Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uci-DR-1CG">
                                         <rect key="frame" x="0.0" y="60" width="375" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="zG6-do-Spr"/>

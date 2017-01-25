@@ -29,6 +29,8 @@ class ScoreboardViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+    let greenColor = UIColor( red: 18/255, green: 136/255, blue: 2/255, alpha: 1.0 )
+    
     weak var delegate: ScoreboardDelegate? = nil
     
     var scoreData: [String: Int]? = nil
@@ -51,13 +53,13 @@ class ScoreboardViewController: UIViewController, UITableViewDataSource, UITable
         let subtractSinglePointButton = MyButton(frame: CGRect(x: 240, y: 0, width: 50, height: 50))
         
         subtractSinglePointButton.setTitle("-", forState: .Normal)
-        subtractSinglePointButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        subtractSinglePointButton.setTitleColor(greenColor, forState: .Normal)
         subtractSinglePointButton.tagString = names[indexPath.row]
         subtractSinglePointButton.addTarget(self, action: #selector(ScoreboardViewController.minusPressed(_:)), forControlEvents: .TouchUpInside)
 
         
         addSinglePointButton.setTitle("+", forState: .Normal)
-        addSinglePointButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        addSinglePointButton.setTitleColor(greenColor, forState: .Normal)
         addSinglePointButton.tagString = names[indexPath.row]
         addSinglePointButton.addTarget(self, action: #selector(ScoreboardViewController.pressed(_:)), forControlEvents: .TouchUpInside)
 
