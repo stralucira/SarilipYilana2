@@ -60,32 +60,25 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
     
     @IBAction func newGame(sender: UIBarButtonItem) {
         
-        let newGameAlert = UIAlertController(title: "New Game", message: "Your current game data will be deleted.", preferredStyle: UIAlertControllerStyle.Alert)
+        let newGameAlert = UIAlertController(title: "Quit", message: "Are you sure you want to quit game?", preferredStyle: UIAlertControllerStyle.Alert)
         
-        newGameAlert.addAction(UIAlertAction(title: "New Game", style: .Default, handler: {(action: UIAlertAction!) in
+        newGameAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {(action: UIAlertAction!) in
         
             self.data.clear()
             self.clearDisplays()
-            
-            let textField = newGameAlert.textFields![0] as UITextField
-            self.data.gameID = textField.text!
-            
-            self.title = self.data.gameID
+            self.navigationController?.dismissViewControllerAnimated(true, completion: {
+
+            })
+            self.performSegueWithIdentifier("quitGame", sender: self)
             
         }))
         
-        newGameAlert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Name of your game!"
-        })
-        
-        newGameAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: {(action: UIAlertAction!) in
+        newGameAlert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: {(action: UIAlertAction!) in
         
         }))
         
         presentViewController(newGameAlert, animated: true, completion: nil)
-        
-        self.ref.child("sessions").setValue("merhaba")
-        
+
     }
     
     
@@ -100,7 +93,6 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
         }
     }
 
-    
     @IBAction func showLeaderboardButton(sender: UIBarButtonItem) {
     
     }
@@ -176,6 +168,7 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
     }
     
     func clearDisplays() {
+        
         remainingClaimValue = 0
         claimTruth.text = ""
         claimLabel.text = "Welcome to Sarılıp Yılana"

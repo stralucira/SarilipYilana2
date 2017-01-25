@@ -151,11 +151,12 @@
                         <outlet property="newGameButton" destination="hM9-mb-fuX" id="xed-xN-Pda"/>
                         <outlet property="remainingClaims" destination="rsE-cq-NnM" id="I5a-Ps-PmL"/>
                         <outlet property="showClaimButton" destination="J07-o8-EeN" id="PXs-M9-GZ4"/>
+                        <segue destination="QMp-rH-8Gq" kind="show" identifier="quitGame" id="kjm-jf-do9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SvD-hI-n6S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="741.5" y="-148.5"/>
+            <point key="canvasLocation" x="1703.2" y="-151.57421289355324"/>
         </scene>
         <!--Leaderboard-->
         <scene sceneID="Xg3-X1-7QH">
@@ -193,7 +194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ce0-CN-ok0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1822" y="-149"/>
+            <point key="canvasLocation" x="1703" y="614"/>
         </scene>
         <!--Make Your Claims-->
         <scene sceneID="tne-QT-ifu">
@@ -269,11 +270,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="740" y="707.49625187406298"/>
+            <point key="canvasLocation" x="2714" y="-152"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TMN-Y9-R9x">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Gv-TM-pRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Vt-51-M8y" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jkX-p0-HQ8">
@@ -285,9 +287,8 @@
                         <segue destination="crp-Xg-o8P" kind="relationship" relationship="rootViewController" id="OYz-s9-a5I"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Gv-TM-pRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1617" y="-150"/>
+            <point key="canvasLocation" x="1703" y="-1037"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="rbp-tQ-MPF">
@@ -344,6 +345,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="joinGame:" destination="QMp-rH-8Gq" eventType="touchUpInside" id="BPk-0U-PN2"/>
+                                                    <segue destination="7Vt-51-M8y" kind="show" identifier="joinGame" id="1ez-Rv-zdc"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZv-Nx-Yct">
@@ -356,6 +358,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="newGame:" destination="QMp-rH-8Gq" eventType="touchUpInside" id="DHU-bs-0wm"/>
+                                                    <segue destination="7Vt-51-M8y" kind="show" identifier="startNewGame" id="CPX-v2-ioE"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -379,6 +382,7 @@
                             <constraint firstItem="gZG-Ny-Kxu" firstAttribute="centerX" secondItem="KbH-M4-M6P" secondAttribute="centerX" id="uyz-ce-viH"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="vYK-p7-1jG"/>
                     <connections>
                         <outlet property="bottomConstraint" destination="TKY-Rk-pFI" id="1oA-wK-cAY"/>
                         <outlet property="gameNameField" destination="Uci-DR-1CG" id="GIN-U1-E1U"/>
@@ -387,7 +391,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DzD-jC-myR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-471" y="-203"/>
+            <point key="canvasLocation" x="-129" y="-152"/>
         </scene>
     </scenes>
     <resources>
@@ -396,4 +400,7 @@
         <image name="leaderboard" width="39" height="39"/>
         <image name="tf" width="1024" height="1024"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="1ez-Rv-zdc"/>
+    </inferredMetricsTieBreakers>
 </document>

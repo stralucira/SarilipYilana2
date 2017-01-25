@@ -28,6 +28,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
         super.viewWillAppear(animated)
         
+        gameNameField.text = nil
+        userNameField.text = nil
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignInViewController.keyboardWillShowNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignInViewController.keyboardWillHideNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
@@ -55,6 +58,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
     @IBOutlet weak var gameNameField: UITextField!
     
     private var gameName: String {
@@ -70,6 +74,18 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var userNameField: UITextField!
     
+    private var userName: String {
+        get {
+            if (userNameField.text != nil) {
+                return userNameField.text!
+            }
+            else {
+                return ""
+            }
+
+        }
+    }
+    
 
     @IBAction func newGame(sender: UIButton) {
         
@@ -81,7 +97,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 print("Game already exists. We are directing you to the game!")
                 
             } else {
-                print(self.gameName)
                 self.ref.child("sessions/\(self.gameName)/users/name").setValue(self.userNameField.text!.lowercaseString)
                 
             }
@@ -99,6 +114,17 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if (segue.identifier == "startNewGame" || segue.identifier == "joinGame") {
+            let navigationViewController = segue.destinationViewController as! UINavigationController
+            let destinationViewController = navigationViewController.viewControllers[0] as! GameViewController
+            
+            destinationViewController.data.gameID = gameName
+            destinationViewController.data.addPlayer(userName)
+        }
+    }
     
     
     func keyboardWillShowNotification(notification: NSNotification) {
