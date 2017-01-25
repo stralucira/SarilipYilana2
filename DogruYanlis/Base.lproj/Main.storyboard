@@ -311,7 +311,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" red="0.070588235294117646" green="0.52941176470588236" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="highlightedColor" red="0.070588235289999995" green="0.52941176469999995" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="highlightedColor" red="0.082352941176470587" green="0.53725490196078429" blue="0.043137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter Game Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uci-DR-1CG">
                                         <rect key="frame" x="0.0" y="60" width="375" height="60"/>
@@ -336,16 +336,19 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBS-UY-GVm">
                                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="60"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.085436801681355562" green="0.57565846887997629" blue="0.035409323670980666" alpha="1" colorSpace="calibratedRGB"/>
                                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                                 <state key="normal" title="Join">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="joinGame:" destination="QMp-rH-8Gq" eventType="touchUpInside" id="BPk-0U-PN2"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZv-Nx-Yct">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="60"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.085436801681355562" green="0.57565846887997629" blue="0.035409323670980666" alpha="1" colorSpace="calibratedRGB"/>
                                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                                 <state key="normal" title="New Game">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -371,18 +374,20 @@
                             <constraint firstItem="gZG-Ny-Kxu" firstAttribute="leading" secondItem="KbH-M4-M6P" secondAttribute="leading" id="6eL-ip-U2H"/>
                             <constraint firstAttribute="trailing" secondItem="gZG-Ny-Kxu" secondAttribute="trailing" id="D6K-u3-CC6"/>
                             <constraint firstItem="qEt-Vj-48E" firstAttribute="top" secondItem="0Hy-HN-4va" secondAttribute="bottom" constant="69" id="Hpw-pc-GK2"/>
-                            <constraint firstItem="a4x-8k-2m4" firstAttribute="top" secondItem="gZG-Ny-Kxu" secondAttribute="bottom" id="TKY-Rk-pFI"/>
+                            <constraint firstItem="gZG-Ny-Kxu" firstAttribute="bottom" secondItem="a4x-8k-2m4" secondAttribute="top" identifier="bottomConstraint" id="TKY-Rk-pFI"/>
                             <constraint firstItem="qEt-Vj-48E" firstAttribute="centerX" secondItem="KbH-M4-M6P" secondAttribute="centerX" id="qu0-fE-5nz"/>
                             <constraint firstItem="gZG-Ny-Kxu" firstAttribute="centerX" secondItem="KbH-M4-M6P" secondAttribute="centerX" id="uyz-ce-viH"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="TKY-Rk-pFI" id="1oA-wK-cAY"/>
                         <outlet property="gameNameField" destination="Uci-DR-1CG" id="GIN-U1-E1U"/>
+                        <outlet property="userNameField" destination="F2t-SA-wXX" id="vqZ-Xc-Bal"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DzD-jC-myR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-591" y="-636"/>
+            <point key="canvasLocation" x="-471" y="-203"/>
         </scene>
     </scenes>
     <resources>
