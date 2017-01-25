@@ -41,7 +41,7 @@ class ScoreboardViewController: UIViewController, UITableViewDataSource, UITable
         return scoreData!.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->   UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
         let nameLabel = UILabel(frame: CGRect(x:25, y:0, width:100, height:50))

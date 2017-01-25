@@ -23,7 +23,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZA-F6-GVG">
-                                <rect key="frame" x="16" y="617" width="78" height="30"/>
+                                <rect key="frame" x="16" y="611" width="103" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Add Claims">
                                     <color key="titleColor" red="0.086274509803921567" green="0.5725490196078431" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -68,7 +69,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J07-o8-EeN">
-                                <rect key="frame" x="278" y="617" width="81" height="30"/>
+                                <rect key="frame" x="252" y="611" width="107" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Show Claim">
                                     <color key="titleColor" red="0.086274509799999996" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -162,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SvD-hI-n6S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703.2" y="-151.57421289355324"/>
+            <point key="canvasLocation" x="1702" y="-152"/>
         </scene>
         <!--Leaderboard-->
         <scene sceneID="Xg3-X1-7QH">
@@ -200,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ce0-CN-ok0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1703" y="614"/>
+            <point key="canvasLocation" x="1244" y="609"/>
         </scene>
         <!--Make Your Claims-->
         <scene sceneID="tne-QT-ifu">
@@ -276,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2692" y="-152"/>
+            <point key="canvasLocation" x="2806" y="-152"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TMN-Y9-R9x">
@@ -397,7 +399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DzD-jC-myR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="825" y="-1038"/>
+            <point key="canvasLocation" x="425" y="-1038"/>
         </scene>
     </scenes>
     <resources>
@@ -407,6 +409,6 @@
         <image name="tf" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1ez-Rv-zdc"/>
+        <segue reference="CPX-v2-ioE"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,10 +13,15 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
     var ref: FIRDatabaseReference!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ref = FIRDatabase.database().reference()
+        
+        self.gameNameField.delegate = self
+        self.userNameField.delegate = self
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -85,27 +90,60 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
         }
     }
-    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        //textField.placeholder = ""
+    }
 
     @IBAction func newGame(sender: UIButton) {
         
-        ref.child("sessions").observeSingleEventOfType(.Value, withBlock: {
-            (snapshot) in
-            
-            if snapshot.hasChild(self.gameName){
+        if gameExists(gameName){
+                
+                let gameExistsAlert = UIAlertController(title: "Game Already Exists", message: "Do you want to join the game with this name instead of creating a new game?", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                gameExistsAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {(action: UIAlertAction!) in
+                    
+                    self.performSegueWithIdentifier("joinGame", sender: self)
+                    
+                }))
+                
+                gameExistsAlert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: {(action: UIAlertAction!) in
+                    
+                }))
+                
+                self.presentViewController(gameExistsAlert, animated: true, completion: nil)
                 
                 print("Game already exists. We are directing you to the game!")
                 
             } else {
+            
                 self.ref.child("sessions/\(self.gameName)/users/name").setValue(self.userNameField.text!.lowercaseString)
-                
+            
             }
-        })
-
     }
+
+    
     
     @IBAction func joinGame(sender: UIButton) {
         self.ref.child("sessions/\(gameNameField.text!)/users/")
+    }
+    
+    func gameExists(gameName: String) -> Bool {
+        
+        var gameExists: Bool = false
+        
+        ref.child("sessions").observeSingleEventOfType(.Value,
+            withBlock: {
+                (snapshot) in
+                
+                if snapshot.hasChild(self.gameName){
+                    gameExists = true
+                } else {
+                    gameExists = false
+                }
+            }
+        )
+        
+        return gameExists
     }
     
     func joinGameWithName(gameName: String) {
@@ -117,7 +155,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if (segue.identifier == "startNewGame" || segue.identifier == "joinGame") {
+        if (segue.identifier == "startNewGame") {
             let navigationViewController = segue.destinationViewController as! UINavigationController
             let destinationViewController = navigationViewController.viewControllers[0] as! GameViewController
             
