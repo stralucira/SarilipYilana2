@@ -15,7 +15,7 @@
 		7C6341441D44EE8400137383 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6341421D44EE8400137383 /* Main.storyboard */; };
 		7C6341461D44EE8400137383 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C6341451D44EE8400137383 /* Assets.xcassets */; };
 		7C6341491D44EE8400137383 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6341471D44EE8400137383 /* LaunchScreen.storyboard */; };
-		7C6341511D44F0EB00137383 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6341501D44F0EB00137383 /* LaunchViewController.swift */; };
+		7C6341511D44F0EB00137383 /* AddClaimsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6341501D44F0EB00137383 /* AddClaimsViewController.swift */; };
 		7C6341531D44FA2F00137383 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6341521D44FA2F00137383 /* GameData.swift */; };
 		7C846DD21D458C5000A05DA3 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C846DD11D458C5000A05DA3 /* GameViewController.swift */; };
 		7C8E11E41E38E8F600708A16 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E11E31E38E8F600708A16 /* SignInViewController.swift */; };
@@ -32,7 +32,7 @@
 		7C6341451D44EE8400137383 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C6341481D44EE8400137383 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C63414A1D44EE8400137383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C6341501D44F0EB00137383 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		7C6341501D44F0EB00137383 /* AddClaimsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddClaimsViewController.swift; sourceTree = "<group>"; };
 		7C6341521D44FA2F00137383 /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		7C846DD11D458C5000A05DA3 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		7C8E11E31E38E8F600708A16 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 				7C26C40A1D56247C00535A47 /* Supporting Files */,
 				7C846DD11D458C5000A05DA3 /* GameViewController.swift */,
 				7C8E11E31E38E8F600708A16 /* SignInViewController.swift */,
-				7C6341501D44F0EB00137383 /* LaunchViewController.swift */,
+				7C6341501D44F0EB00137383 /* AddClaimsViewController.swift */,
 				7C26C40B1D56249400535A47 /* ScoreboardViewController.swift */,
 				7C6341521D44FA2F00137383 /* GameData.swift */,
 				7C6341421D44EE8400137383 /* Main.storyboard */,
@@ -247,7 +247,7 @@
 				7C19F46B1D82DE05002D19D5 /* SevenSwitch.swift in Sources */,
 				7C63413F1D44EE8400137383 /* AppDelegate.swift in Sources */,
 				7C6341531D44FA2F00137383 /* GameData.swift in Sources */,
-				7C6341511D44F0EB00137383 /* LaunchViewController.swift in Sources */,
+				7C6341511D44F0EB00137383 /* AddClaimsViewController.swift in Sources */,
 				7C26C40C1D56249400535A47 /* ScoreboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

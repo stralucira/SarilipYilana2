@@ -84,7 +84,7 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "makeYourClaims" {
-            let secondViewController = segue.destinationViewController as! LaunchViewController
+            let secondViewController = segue.destinationViewController as! AddClaimsViewController
             secondViewController.delegate = self
         } else if segue.identifier == "showScoreboard" {
             let second = segue.destinationViewController as! ScoreboardViewController

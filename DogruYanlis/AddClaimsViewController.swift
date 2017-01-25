@@ -1,5 +1,5 @@
 //
-//  LaunchViewController.swift
+//  AddClaimsViewController.swift
 //  DogruYanlis
 //
 //  Created by Başar Oğuz on 24/07/16.
@@ -15,7 +15,7 @@ protocol DataEnteredDelegate: class {
 }
 
 @IBDesignable
-class LaunchViewController: UIViewController {
+class AddClaimsViewController: UIViewController {
 
     let _greenColor = UIColor( red: 18/255, green: 136/255, blue: 2/255, alpha: 1.0 )
     let greenColor = UIColor( red: 18/255, green: 136/255, blue: 2/255, alpha: 1.0 ).CGColor
@@ -37,16 +37,16 @@ class LaunchViewController: UIViewController {
         switchHandler(mySwitch)
         switchHandler(mySwitch2)
         switchHandler(mySwitch3)
-        mySwitch.addTarget(self, action: #selector(LaunchViewController.switchOne(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        mySwitch2.addTarget(self, action: #selector(LaunchViewController.switchTwo(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        mySwitch3.addTarget(self, action: #selector(LaunchViewController.switchThree(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        mySwitch.addTarget(self, action: #selector(AddClaimsViewController.switchOne(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        mySwitch2.addTarget(self, action: #selector(AddClaimsViewController.switchTwo(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        mySwitch3.addTarget(self, action: #selector(AddClaimsViewController.switchThree(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
         self.view.addSubview(mySwitch)
         self.view.addSubview(mySwitch2)
         self.view.addSubview(mySwitch3)
         
         //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LaunchViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddClaimsViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         sentenceOne.layer.cornerRadius = 10.0
