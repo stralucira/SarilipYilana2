@@ -234,6 +234,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+<<<<<<< HEAD
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tf" translatesAutoresizingMaskIntoConstraints="NO" id="ng1-MP-feG">
                                 <rect key="frame" x="310" y="93" width="49" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -243,6 +244,18 @@
                                 <rect key="frame" x="20" y="93" width="171" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+||||||| merged common ancestors
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fkz-dF-7vY">
+                                <rect key="frame" x="126" y="93" width="122" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+=======
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NR7-En-owd">
+                                <rect key="frame" x="310" y="170" width="51" height="31"/>
+                            </switch>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fkz-dF-7vY">
+                                <rect key="frame" x="126" y="93" width="122" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+>>>>>>> f735a602d04476b8bb0ab54a394b02290ac3260a
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9a-yc-zVB">
@@ -259,6 +272,41 @@
                                     <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ojo-0h-AhK"/>
                                 </connections>
                             </button>
+<<<<<<< HEAD
+||||||| merged common ancestors
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZNb-VT-ZNZ">
+                                <rect key="frame" x="255" y="385" width="47" height="29"/>
+                                <segments>
+                                    <segment title="T"/>
+                                    <segment title="F"/>
+                                </segments>
+                            </segmentedControl>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NR7-En-owd">
+                                <rect key="frame" x="310" y="170" width="51" height="31"/>
+                            </switch>
+=======
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZNb-VT-ZNZ">
+                                <rect key="frame" x="255" y="385" width="47" height="29"/>
+                                <segments>
+                                    <segment title="T"/>
+                                    <segment title="F"/>
+                                </segments>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uIS-rz-dkP">
+                                <rect key="frame" x="255" y="429" width="47" height="29"/>
+                                <segments>
+                                    <segment title="T"/>
+                                    <segment title="F"/>
+                                </segments>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0Di-68-rab">
+                                <rect key="frame" x="255" y="470" width="47" height="29"/>
+                                <segments>
+                                    <segment title="T"/>
+                                    <segment title="F"/>
+                                </segments>
+                            </segmentedControl>
+>>>>>>> f735a602d04476b8bb0ab54a394b02290ac3260a
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -271,6 +319,9 @@
                     <navigationItem key="navigationItem" title="Make Your Claims" id="ssv-VK-S0s"/>
                     <connections>
                         <outlet property="playerName" destination="fkz-dF-7vY" id="Hhk-Hu-2OM"/>
+                        <outlet property="segmentedFirst" destination="ZNb-VT-ZNZ" id="Pkx-XR-fkg"/>
+                        <outlet property="segmentedSecond" destination="uIS-rz-dkP" id="XKM-3M-eOF"/>
+                        <outlet property="segmentedThird" destination="0Di-68-rab" id="SL4-ir-RMg"/>
                         <outlet property="sentenceOne" destination="Iqg-0x-23g" id="zqo-FX-5Sm"/>
                         <outlet property="sentenceThree" destination="WCa-6M-dRX" id="hxL-nM-3Ha"/>
                         <outlet property="sentenceTwo" destination="JYj-kc-R0A" id="4eA-c2-zhY"/>
