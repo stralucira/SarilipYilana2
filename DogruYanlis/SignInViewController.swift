@@ -8,10 +8,13 @@
 
 import UIKit
 import Firebase
+import Dispatch
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
 
     var ref: FIRDatabaseReference!
+    
+    var myGroup = dispatch_group_create()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +52,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        // Remove memory overflow pointers.
     }
     
 
@@ -88,64 +92,76 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
         }
     }
+    
     func textFieldDidBeginEditing(textField: UITextField) {
         //textField.placeholder = ""
     }
-
+    
     @IBAction func newGame(sender: UIButton) {
         
-        if gameExists(gameName){
-                
-                let gameExistsAlert = UIAlertController(title: "Game Already Exists", message: "Do you want to join the game with this name instead of creating a new game?", preferredStyle: UIAlertControllerStyle.Alert)
-                
-                gameExistsAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {(action: UIAlertAction!) in
-                    
-                    self.performSegueWithIdentifier("joinGame", sender: self)
-                    
-                }))
-                
-                gameExistsAlert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: {(action: UIAlertAction!) in
-                    
-                }))
-                
-                self.presentViewController(gameExistsAlert, animated: true, completion: nil)
-                
-                print("Game already exists. We are directing you to the game!")
-                
-            } else {
-            
-                self.ref.child("sessions/\(self.gameName)/users/name").setValue(self.userNameField.text!.lowercaseString)
-            
-            }
+        let session = [
+            "initiator" : userName,
+            "user count" : 1]
+        
+        let user = [
+            "game name"    : gameName,
+            "claimCount"   : 0,
+            "score"        : 0,
+        ]
+        
+        let childUpdates = [ "sessions/\(gameName)" : session,
+                             "users/\(userName)" : user
+        ]
+        
+        self.ref.updateChildValues(childUpdates)
     }
 
     
     
     @IBAction func joinGame(sender: UIButton) {
-        self.ref.child("sessions/\(gameNameField.text!)/users/")
+        
+        gameExists(gameName)
+        
+        let user = [
+            "game name" : gameName,
+            "claimCount": 0,
+            "score"     : 0,
+        ]
+        
+        let childUpdates = [
+            "users/\(userName)" : user
+        ]
+        self.ref.updateChildValues(childUpdates)
     }
     
     func gameExists(gameName: String) -> Bool {
         
         var gameExists: Bool = false
         
+        dispatch_group_enter(myGroup)
         ref.child("sessions").observeSingleEventOfType(.Value,
-            withBlock: {
-                (snapshot) in
-                
-                if snapshot.hasChild(self.gameName){
+            withBlock: {(snapshot) in
+                let sessions = snapshot.value as? NSDictionary
+                if let val = sessions![gameName] {
+                    print(val)
                     gameExists = true
+                    print(gameExists)
                 } else {
                     gameExists = false
                 }
+                dispatch_group_leave(self.myGroup)
             }
         )
-        
+        dispatch_group_notify(myGroup, dispatch_get_main_queue(), {
+            print(gameExists)
+            
+        })
         return gameExists
+        
     }
     
     func joinGameWithName(gameName: String) {
-        
+    
         
     }
 
@@ -162,7 +178,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
     func keyboardWillShowNotification(notification: NSNotification) {
         
         let info = notification.userInfo!
@@ -174,7 +189,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             self.view.layoutIfNeeded()
 
         })
-
     }
     
     func keyboardWillHideNotification(notification: NSNotification) {
