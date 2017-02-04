@@ -99,6 +99,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func newGame(sender: UIButton) {
         
+        
         let session = [
             "initiator" : userName,
             "user count" : 1]
@@ -120,7 +121,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func joinGame(sender: UIButton) {
         
-        gameExists(gameName)
+        gameExists(gameName) {
+            result in
+            
+            print(result)
+        }
         
         let user = [
             "game name" : gameName,
@@ -131,33 +136,23 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         let childUpdates = [
             "users/\(userName)" : user
         ]
+        
         self.ref.updateChildValues(childUpdates)
     }
     
-    func gameExists(gameName: String) -> Bool {
-        
+    func gameExists(gameName: String, completionHandler: (Bool) -> ()) {
         var gameExists: Bool = false
-        
         dispatch_group_enter(myGroup)
         ref.child("sessions").observeSingleEventOfType(.Value,
             withBlock: {(snapshot) in
                 let sessions = snapshot.value as? NSDictionary
-                if let val = sessions![gameName] {
-                    print(val)
-                    gameExists = true
-                    print(gameExists)
-                } else {
-                    gameExists = false
-                }
-                dispatch_group_leave(self.myGroup)
+                gameExists = sessions![gameName] != nil
+                    dispatch_group_leave(self.myGroup)
             }
         )
         dispatch_group_notify(myGroup, dispatch_get_main_queue(), {
-            print(gameExists)
-            
+            completionHandler(gameExists)
         })
-        return gameExists
-        
     }
     
     func joinGameWithName(gameName: String) {
