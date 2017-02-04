@@ -24,13 +24,10 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         let sarilipSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sarilip", ofType: "m4a")!)
         try! audioPlayer = AVAudioPlayer(contentsOfURL: sarilipSound, fileTypeHint: "m4a")
         audioPlayer.prepareToPlay()
-    
         anilButton.enabled = false
-
         ref = FIRDatabase.database().reference()
     }
 
@@ -63,24 +60,17 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
         let newGameAlert = UIAlertController(title: "Quit", message: "Are you sure you want to quit game?", preferredStyle: UIAlertControllerStyle.Alert)
         
         newGameAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {(action: UIAlertAction!) in
-        
             self.data.clear()
             self.clearDisplays()
-            self.navigationController?.dismissViewControllerAnimated(true, completion: {
-
-            })
+            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
             self.performSegueWithIdentifier("quitGame", sender: self)
-            
         }))
         
         newGameAlert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: {(action: UIAlertAction!) in
-        
         }))
         
         presentViewController(newGameAlert, animated: true, completion: nil)
-
     }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "makeYourClaims" {
@@ -94,28 +84,21 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
     }
 
     @IBAction func showLeaderboardButton(sender: UIBarButtonItem) {
-    
     }
     
     //Used for DataEnteredDelegate
     func userDidEnterInformation(claim: Claim) {
-        
         data.addClaim(claim.name, sentence: claim.sentence, truthfulness: claim.truthfulness)
-        
         data.addPlayer(claim.name)
-        
         remainingClaimValue = data.claimCount
-        
     }
     
     func increaseUserScore(user: String, byScore score: Int){
-        
         if (score == 1) {
             data.addPoint(user)
         } else if (score == 2) {
             data.addYilanPoint(user)
         } else if (score == -1) {
-            
             if (data.scores[user] > 0 ){
                 data.subtractPoint(user)
             }
@@ -142,22 +125,17 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
         anilButton.enabled = true
         showClaimButton.enabled = false
         }
-        
-        
     }
     
     @IBAction func reveal(sender: AnyObject) {
-        
         if let temp = claimOwnerString{
             claimOwner.text = " - \(temp)"
         }
-        
         if let tempBool = claimTruthBool {
             
             if (tempBool){
                 claimTruth.textColor = UIColor.greenColor()
                 claimTruth.text = "True"
-                
             } else {
                 claimTruth.textColor = UIColor.redColor()
                 claimTruth.text = "False"
@@ -168,7 +146,6 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
     }
     
     func clearDisplays() {
-        
         remainingClaimValue = 0
         claimTruth.text = ""
         claimLabel.text = "Welcome to Sarılıp Yılana"
@@ -179,5 +156,4 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
         anilButton.enabled = false
         showClaimButton.enabled = true
     }
-    
 }

@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import Dispatch
+import CoreFoundation
+import Foundation
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
 
@@ -99,45 +101,87 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func newGame(sender: UIButton) {
         
-        
-        let session = [
-            "initiator" : userName,
-            "user count" : 1]
-        
-        let user = [
-            "game name"    : gameName,
-            "claimCount"   : 0,
-            "score"        : 0,
-        ]
-        
-        let childUpdates = [ "sessions/\(gameName)" : session,
-                             "users/\(userName)" : user
-        ]
-        
-        self.ref.updateChildValues(childUpdates)
+        if self.gameName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).isEmpty {
+            let gameNameEmptyAlert = UIAlertController(title: "Warning", message: "Game name cannot be empty", preferredStyle: UIAlertControllerStyle.Alert)
+            gameNameEmptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(gameNameEmptyAlert, animated: true, completion: nil)
+        } else if self.userName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).isEmpty {
+            let userNameEmptyAlert = UIAlertController(title: "Warning", message: "Your name cannot be empty", preferredStyle: UIAlertControllerStyle.Alert)
+            userNameEmptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(userNameEmptyAlert, animated: true, completion: nil)
+        } else {
+            gameExists(gameName) { (exists) in
+                if exists {
+                    let gameExistsAlert = UIAlertController(title:"Game Exists", message: "Do you want to join the game instead?", preferredStyle: UIAlertControllerStyle.Alert)
+                    gameExistsAlert.addAction(
+                        UIAlertAction(
+                            title: "Cancel",
+                            style: UIAlertActionStyle.Cancel,
+                            handler: nil
+                        )
+                    )
+                    gameExistsAlert.addAction(
+                        UIAlertAction(
+                            title: "Join",
+                            style: UIAlertActionStyle.Default,
+                            handler: nil
+                        )
+                    )
+                    self.presentViewController(gameExistsAlert, animated: true, completion: nil)
+                } else {
+                    let session = [
+                        "initiator" : self.userName,
+                        "user count" : 1
+                    ]
+                    let user = [
+                        "game name"    : self.gameName,
+                        "claimCount"   : 0,
+                        "score"        : 0,
+                    ]
+                    let childUpdates = [ "sessions/\(self.gameName)" : session,
+                                         "users/\(self.userName)" : user
+                    ]
+                    self.ref.updateChildValues(childUpdates)
+                }
+            }
+        }
     }
 
-    
-    
     @IBAction func joinGame(sender: UIButton) {
         
-        gameExists(gameName) {
-            result in
-            
-            print(result)
+        if self.gameName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).isEmpty {
+            let gameNameEmptyAlert = UIAlertController(title: "Warning", message: "Game name cannot be empty", preferredStyle: UIAlertControllerStyle.Alert)
+            gameNameEmptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(gameNameEmptyAlert, animated: true, completion: nil)
+        } else if self.userName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).isEmpty {
+            let userNameEmptyAlert = UIAlertController(title: "Warning", message: "Your name cannot be empty", preferredStyle: UIAlertControllerStyle.Alert)
+            userNameEmptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(userNameEmptyAlert, animated: true, completion: nil)
+        } else {
+            gameExists(gameName, completionHandler: { (exists) in
+                if exists {
+                    let user = [
+                        "game name" : self.gameName,
+                        "claimCount": 0,
+                        "score"     : 0,
+                    ]
+                    let childUpdates = [
+                        "users/\(self.userName)" : user
+                    ]
+                    self.ref.updateChildValues(childUpdates)
+                } else {
+                    let gameDoesNotExistAlert = UIAlertController(title:"Game Not Found", message: "Please enter an active game name to join.", preferredStyle: UIAlertControllerStyle.Alert)
+                    gameDoesNotExistAlert.addAction(
+                        UIAlertAction(
+                            title: "Ok",
+                            style: UIAlertActionStyle.Cancel,
+                            handler: nil
+                        )
+                    )
+                    self.presentViewController(gameDoesNotExistAlert, animated: true, completion: nil)
+                }
+            })
         }
-        
-        let user = [
-            "game name" : gameName,
-            "claimCount": 0,
-            "score"     : 0,
-        ]
-        
-        let childUpdates = [
-            "users/\(userName)" : user
-        ]
-        
-        self.ref.updateChildValues(childUpdates)
     }
     
     func gameExists(gameName: String, completionHandler: (Bool) -> ()) {
@@ -155,11 +199,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
-    func joinGameWithName(gameName: String) {
+//    func joinGameWithName(gameName: String) {
+//    
+//        
+//    }
     
-        
-    }
-
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -170,6 +214,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             
             destinationViewController.data.gameID = gameName
             destinationViewController.data.addPlayer(userName)
+        } else if (segue.identifier == "joinGame") {
+            
         }
     }
     

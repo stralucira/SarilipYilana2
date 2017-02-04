@@ -10,11 +10,9 @@ import Foundation
 import UIKit
 
 struct Claim {
-    
     var name: String
     var sentence: String
     var truthfulness: Bool
-    
 }
 
 class GameData {
@@ -33,11 +31,9 @@ class GameData {
     }
     
     struct Claim {
-    
         var name: String
         var sentence: String
         var truthfulness: Bool
-        
     }
     
     func addClaim(senderName: String, sentence: String, truthfulness: Bool){
