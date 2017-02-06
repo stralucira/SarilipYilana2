@@ -381,7 +381,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="joinGame:" destination="QMp-rH-8Gq" eventType="touchUpInside" id="BPk-0U-PN2"/>
-                                                    <segue destination="7Vt-51-M8y" kind="show" identifier="joinGame" id="1ez-Rv-zdc"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZv-Nx-Yct">
@@ -394,7 +393,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="newGame:" destination="QMp-rH-8Gq" eventType="touchUpInside" id="DHU-bs-0wm"/>
-                                                    <segue destination="7Vt-51-M8y" kind="show" identifier="startNewGame" id="CPX-v2-ioE"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -423,11 +421,13 @@
                         <outlet property="bottomConstraint" destination="TKY-Rk-pFI" id="1oA-wK-cAY"/>
                         <outlet property="gameNameField" destination="Uci-DR-1CG" id="GIN-U1-E1U"/>
                         <outlet property="userNameField" destination="F2t-SA-wXX" id="vqZ-Xc-Bal"/>
+                        <segue destination="7Vt-51-M8y" kind="show" identifier="startNewGame" id="6dl-8u-OlS"/>
+                        <segue destination="7Vt-51-M8y" kind="show" identifier="joinGame" id="oaJ-09-6Sj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DzD-jC-myR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="425" y="-1038"/>
+            <point key="canvasLocation" x="798" y="-1038"/>
         </scene>
     </scenes>
     <resources>
@@ -436,6 +436,6 @@
         <image name="leaderboard" width="39" height="39"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CPX-v2-ioE"/>
+        <segue reference="oaJ-09-6Sj"/>
     </inferredMetricsTieBreakers>
 </document>

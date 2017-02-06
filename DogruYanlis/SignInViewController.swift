@@ -138,10 +138,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                         "claimCount"   : 0,
                         "score"        : 0,
                     ]
-                    let childUpdates = [ "sessions/\(self.gameName)" : session,
-                                         "users/\(self.userName)" : user
+                    let childUpdates = [
+                        "sessions/\(self.gameName)" : session,
+                        "users/\(self.userName)" : user
                     ]
                     self.ref.updateChildValues(childUpdates)
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    self.performSegueWithIdentifier("startNewGame", sender: self)
                 }
             }
         }
