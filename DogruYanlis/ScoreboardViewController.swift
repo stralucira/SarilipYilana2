@@ -56,7 +56,6 @@ class ScoreboardViewController: UIViewController, UITableViewDataSource, UITable
         subtractSinglePointButton.setTitleColor(greenColor, forState: .Normal)
         subtractSinglePointButton.tagString = names[indexPath.row]
         subtractSinglePointButton.addTarget(self, action: #selector(ScoreboardViewController.minusPressed(_:)), forControlEvents: .TouchUpInside)
-
         
         addSinglePointButton.setTitle("+", forState: .Normal)
         addSinglePointButton.setTitleColor(greenColor, forState: .Normal)
