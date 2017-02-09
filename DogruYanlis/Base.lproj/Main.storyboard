@@ -22,29 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZA-F6-GVG">
-                                <rect key="frame" x="16" y="611" width="103" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Add Claims">
-                                    <color key="titleColor" red="0.086274509803921567" green="0.5725490196078431" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="makeYourClaims" id="s8D-B4-oKn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyA-Wi-dtg">
-                                <rect key="frame" x="148" y="576" width="78" height="79"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="79" id="URf-f4-Moq"/>
-                                    <constraint firstAttribute="width" constant="78" id="svA-uH-smf"/>
-                                </constraints>
-                                <state key="normal" title="Reveal" image="anil"/>
-                                <connections>
-                                    <action selector="reveal:" destination="crp-Xg-o8P" eventType="touchUpInside" id="gEG-tF-qj4"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Claims Left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G07-Ju-6wk">
-                                <rect key="frame" x="144.5" y="378" width="86" height="20"/>
+                                <rect key="frame" x="145" y="378" width="86" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -58,16 +37,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J07-o8-EeN">
-                                <rect key="frame" x="252" y="611" width="107" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Show Claim">
-                                    <color key="titleColor" red="0.086274509799999996" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="showClaim:" destination="crp-Xg-o8P" eventType="touchUpInside" id="E5k-w4-bcW"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Sarılıp Yılana" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hl7-oU-gyD">
                                 <rect key="frame" x="16" y="100" width="343" height="147"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
@@ -94,48 +63,67 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zzs-pA-UsR">
+                                <rect key="frame" x="16" y="588" width="343" height="79"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZA-F6-GVG">
+                                        <rect key="frame" x="0.0" y="21.5" width="103" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Add Claims">
+                                            <color key="titleColor" red="0.086274509803921567" green="0.5725490196078431" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="makeYourClaims" id="s8D-B4-oKn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyA-Wi-dtg">
+                                        <rect key="frame" x="130.5" y="0.0" width="78" height="79"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="79" id="URf-f4-Moq"/>
+                                            <constraint firstAttribute="width" constant="78" id="svA-uH-smf"/>
+                                        </constraints>
+                                        <state key="normal" title="Reveal" image="anil"/>
+                                        <connections>
+                                            <action selector="reveal:" destination="crp-Xg-o8P" eventType="touchUpInside" id="gEG-tF-qj4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J07-o8-EeN">
+                                        <rect key="frame" x="236" y="21.5" width="107" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Show Claim">
+                                            <color key="titleColor" red="0.086274509799999996" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showClaim:" destination="crp-Xg-o8P" eventType="touchUpInside" id="E5k-w4-bcW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="79" id="rpC-qh-VHb"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="zzs-pA-UsR" secondAttribute="trailing" id="1CS-rf-Hgo"/>
                             <constraint firstItem="rsE-cq-NnM" firstAttribute="leading" secondItem="7Hf-x4-csP" secondAttribute="leadingMargin" constant="-16" id="1Zr-XB-h4U"/>
-                            <constraint firstItem="J07-o8-EeN" firstAttribute="leading" secondItem="uyA-Wi-dtg" secondAttribute="trailing" constant="48" id="A1l-qm-p8y"/>
-                            <constraint firstItem="gHe-6c-9pL" firstAttribute="top" secondItem="XZA-F6-GVG" secondAttribute="bottom" constant="20" id="AKw-UE-75y"/>
+                            <constraint firstItem="zzs-pA-UsR" firstAttribute="leading" secondItem="7Hf-x4-csP" secondAttribute="leadingMargin" id="5is-xX-nit"/>
                             <constraint firstItem="Bzd-Wo-N0f" firstAttribute="trailing" secondItem="VRL-t6-tjo" secondAttribute="trailing" id="B8p-Tt-FHp"/>
-                            <constraint firstItem="uyA-Wi-dtg" firstAttribute="leading" secondItem="XZA-F6-GVG" secondAttribute="trailing" constant="16" id="ENI-YW-YQe"/>
+                            <constraint firstItem="gHe-6c-9pL" firstAttribute="top" secondItem="zzs-pA-UsR" secondAttribute="bottom" id="DrK-wY-2il"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rsE-cq-NnM" secondAttribute="trailing" constant="-16" id="HAg-QV-ypL"/>
                             <constraint firstItem="VRL-t6-tjo" firstAttribute="top" secondItem="Bzd-Wo-N0f" secondAttribute="bottom" constant="8" symbolic="YES" id="MXj-xh-Aab"/>
-                            <constraint firstItem="Hl7-oU-gyD" firstAttribute="trailing" secondItem="J07-o8-EeN" secondAttribute="trailing" id="Mom-Re-YwF"/>
-                            <constraint firstItem="XZA-F6-GVG" firstAttribute="baseline" secondItem="J07-o8-EeN" secondAttribute="baseline" id="V4G-N4-a2B"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="XZA-F6-GVG" secondAttribute="leading" id="XfP-H4-5vK"/>
                             <constraint firstItem="rsE-cq-NnM" firstAttribute="top" secondItem="G07-Ju-6wk" secondAttribute="bottom" constant="8" id="b2P-c0-DmT"/>
                             <constraint firstItem="Hl7-oU-gyD" firstAttribute="top" secondItem="cOG-aI-zZM" secondAttribute="bottom" constant="36" id="b8Q-8A-RbR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="J07-o8-EeN" secondAttribute="trailing" id="bLt-B1-eEl"/>
+                            <constraint firstItem="zzs-pA-UsR" firstAttribute="centerX" secondItem="7Hf-x4-csP" secondAttribute="centerX" id="jQO-e6-9jV"/>
                             <constraint firstItem="G07-Ju-6wk" firstAttribute="top" secondItem="Hl7-oU-gyD" secondAttribute="bottom" constant="131" id="kgo-bh-OoX"/>
                             <constraint firstItem="Bzd-Wo-N0f" firstAttribute="top" secondItem="cOG-aI-zZM" secondAttribute="bottom" constant="157" id="kr6-EY-GV3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Hl7-oU-gyD" secondAttribute="trailing" id="krw-Pw-gyt"/>
-                            <constraint firstItem="gHe-6c-9pL" firstAttribute="top" secondItem="uyA-Wi-dtg" secondAttribute="bottom" constant="12" id="l7p-KY-ikY"/>
-                            <constraint firstItem="Hl7-oU-gyD" firstAttribute="leading" secondItem="XZA-F6-GVG" secondAttribute="leading" id="lQL-5f-JWg"/>
                             <constraint firstItem="VRL-t6-tjo" firstAttribute="top" secondItem="Hl7-oU-gyD" secondAttribute="bottom" constant="8" symbolic="YES" id="lie-2f-JPD"/>
-                            <constraint firstItem="Bzd-Wo-N0f" firstAttribute="leading" secondItem="uyA-Wi-dtg" secondAttribute="leading" id="mY1-lI-pLp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bzd-Wo-N0f" secondAttribute="trailing" constant="23" id="ni7-yh-vZY"/>
-                            <constraint firstAttribute="bottom" secondItem="XZA-F6-GVG" secondAttribute="bottom" constant="20" symbolic="YES" id="pwZ-YC-w6p"/>
-                            <constraint firstItem="gHe-6c-9pL" firstAttribute="top" secondItem="J07-o8-EeN" secondAttribute="bottom" constant="20" id="q7R-We-buS"/>
                             <constraint firstItem="rsE-cq-NnM" firstAttribute="centerX" secondItem="7Hf-x4-csP" secondAttribute="centerX" id="qJ8-t9-rES"/>
-                            <constraint firstItem="uyA-Wi-dtg" firstAttribute="centerX" secondItem="7Hf-x4-csP" secondAttribute="centerX" id="r3A-dO-iPO"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Hl7-oU-gyD" secondAttribute="leading" id="u7a-Up-lVz"/>
                             <constraint firstItem="G07-Ju-6wk" firstAttribute="centerX" secondItem="7Hf-x4-csP" secondAttribute="centerX" id="wMd-PG-jaF"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Mom-Re-YwF"/>
-                                <exclude reference="lQL-5f-JWg"/>
-                                <exclude reference="mY1-lI-pLp"/>
-                                <exclude reference="ENI-YW-YQe"/>
-                                <exclude reference="V4G-N4-a2B"/>
-                                <exclude reference="pwZ-YC-w6p"/>
-                                <exclude reference="A1l-qm-p8y"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Sarılıp Yılana" id="do9-sa-4Jk">
                         <barButtonItem key="leftBarButtonItem" image="iconsnake" id="hM9-mb-fuX">

@@ -15,7 +15,8 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
 
     var data = GameData()
     
-    var ref: FIRDatabaseReference!
+    lazy var ref: FIRDatabaseReference = FIRDatabase.database().reference()
+    var usersRef: FIRDatabaseReference!
     
     //Sound Related
     //var sarilipSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sarilip", ofType: "m4a")!)
@@ -28,7 +29,8 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
         try! audioPlayer = AVAudioPlayer(contentsOfURL: sarilipSound, fileTypeHint: "m4a")
         audioPlayer.prepareToPlay()
         anilButton.enabled = false
-        ref = FIRDatabase.database().reference()
+        
+        usersRef = ref.child("sessions/\(data.gameID)/users")
     }
 
     var claimOwnerString: String?

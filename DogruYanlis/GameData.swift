@@ -19,6 +19,8 @@ class GameData {
     
     var gameID = ""
     
+    var userName = ""
+    
     var claimCount = 0
     var claimList: [Claim] = []
     

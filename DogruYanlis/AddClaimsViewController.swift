@@ -82,7 +82,6 @@ class AddClaimsViewController: UIViewController {
     @IBOutlet weak var playerName: UITextField!
     
     @IBOutlet weak var sentenceOne: UITextField!
-    @IBOutlet weak var truthOne: UISwitch!
     
     func switchOne(sender: SevenSwitch) {
         if ( sender.isOn() == false ) {
@@ -93,7 +92,6 @@ class AddClaimsViewController: UIViewController {
     }
     
     @IBOutlet weak var sentenceTwo: UITextField!
-    @IBOutlet weak var truthTwo: UISwitch!
     
     @IBAction func switchTwo(sender: SevenSwitch) {
         
@@ -107,7 +105,6 @@ class AddClaimsViewController: UIViewController {
     
     
     @IBOutlet weak var sentenceThree: UITextField!
-    @IBOutlet weak var truthThree: UISwitch!
     
     @IBAction func switchThree(sender: SevenSwitch) {
         
@@ -139,7 +136,7 @@ class AddClaimsViewController: UIViewController {
                 successfulClaims += 1
             }
             
-            if ( successfulClaims == 1 ) {
+            if (successfulClaims == 1) {
                 successMessage = "Your 1 claim has been submitted."
                 titleMessage = "Gratz \(playerName.text!)!"
                 

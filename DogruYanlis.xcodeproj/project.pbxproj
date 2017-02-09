@@ -66,6 +66,7 @@
 		7C26C40A1D56247C00535A47 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7C2D11F11E37BD9B009AEE59 /* GoogleService-Info.plist */,
 				7C19F46A1D82DE05002D19D5 /* SevenSwitch.swift */,
 				7C63413E1D44EE8400137383 /* AppDelegate.swift */,
 				7C6341451D44EE8400137383 /* Assets.xcassets */,
@@ -104,7 +105,6 @@
 				7C26C40B1D56249400535A47 /* ScoreboardViewController.swift */,
 				7C6341521D44FA2F00137383 /* GameData.swift */,
 				7C6341421D44EE8400137383 /* Main.storyboard */,
-				7C2D11F11E37BD9B009AEE59 /* GoogleService-Info.plist */,
 			);
 			path = DogruYanlis;
 			sourceTree = "<group>";

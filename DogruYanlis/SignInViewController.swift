@@ -223,6 +223,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             let destinationViewController = navigationViewController.viewControllers[0] as! GameViewController
             
             destinationViewController.data.gameID = gameName
+            destinationViewController.data.userName = userName
             destinationViewController.data.addPlayer(userName)
             
         } else if (segue.identifier == "joinGame") {
@@ -245,6 +246,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             let destinationViewController = navigationViewController.viewControllers[0] as! GameViewController
             
             destinationViewController.data.gameID = gameName
+            destinationViewController.data.userName = userName
             destinationViewController.data.addPlayer(userName)
         }
     }
