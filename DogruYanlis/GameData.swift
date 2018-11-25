@@ -53,7 +53,7 @@ class GameData {
         
         claimCount -= 1
         
-        return claimList.removeAtIndex(dice)
+        return claimList.remove(at: dice)
         
     }
     

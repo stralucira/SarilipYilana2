@@ -9,14 +9,15 @@
 import UIKit
 import AVFoundation
 import Firebase
+import Foundation
 
 
 class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDelegate {
 
     var data = GameData()
     
-    lazy var ref: FIRDatabaseReference = FIRDatabase.database().reference()
-    var usersRef: FIRDatabaseReference!
+    lazy var ref: DatabaseReference = Database.database().reference()
+    var usersRef: DatabaseReference!
     
     //Sound Related
     //var sarilipSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sarilip", ofType: "m4a")!)
@@ -25,10 +26,10 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let sarilipSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sarilip", ofType: "m4a")!)
-        try! audioPlayer = AVAudioPlayer(contentsOfURL: sarilipSound, fileTypeHint: "m4a")
+        let sarilipSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "sarilip", ofType: "m4a")!)
+        try! audioPlayer = AVAudioPlayer(contentsOf: sarilipSound as URL, fileTypeHint: "m4a")
         audioPlayer.prepareToPlay()
-        anilButton.enabled = false
+        anilButton.isEnabled = false
         
         usersRef = ref.child("sessions/\(data.gameID)/users")
     }
@@ -42,10 +43,11 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
     private var remainingClaimValue: Int {
         
         get{
-            return Int(remainingClaims.text!)!
+            let remainingClaimValueString = remainingClaims.text!.components(separatedBy: " ")
+            return Int(remainingClaimValueString[0])!
         }
         set{
-            remainingClaims.text = String(newValue)
+            remainingClaims.text = String(newValue) + " Claims Left"
         }
     }
 
@@ -57,57 +59,57 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
     
     @IBOutlet weak var newGameButton: UIBarButtonItem!
     
-    @IBAction func newGame(sender: UIBarButtonItem) {
+    @IBAction func newGame(_ sender: UIBarButtonItem) {
         
-        let newGameAlert = UIAlertController(title: "Quit", message: "Are you sure you want to quit game?", preferredStyle: UIAlertControllerStyle.Alert)
+        let newGameAlert = UIAlertController(title: "Quit", message: "Are you sure you want to quit game?", preferredStyle: UIAlertController.Style.alert)
         
-        newGameAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {(action: UIAlertAction!) in
+        newGameAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action: UIAlertAction!) in
             self.data.clear()
             self.clearDisplays()
-            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-            self.performSegueWithIdentifier("quitGame", sender: self)
+            self.navigationController?.dismiss(animated: true, completion: nil)
+            self.performSegue(withIdentifier: "quitGame", sender: self)
         }))
         
-        newGameAlert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: {(action: UIAlertAction!) in
+        newGameAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: {(action: UIAlertAction!) in
         }))
         
-        presentViewController(newGameAlert, animated: true, completion: nil)
+        present(newGameAlert, animated: true, completion: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "makeYourClaims" {
-            let secondViewController = segue.destinationViewController as! AddClaimsViewController
+            let secondViewController = segue.destination as! AddClaimsViewController
             secondViewController.delegate = self
         } else if segue.identifier == "showScoreboard" {
-            let second = segue.destinationViewController as! ScoreboardViewController
+            let second = segue.destination as! ScoreboardViewController
             second.delegate = self
             second.scoreData = data.scores
         }
     }
 
-    @IBAction func showLeaderboardButton(sender: UIBarButtonItem) {
+    @IBAction func showLeaderboardButton(_ sender: UIBarButtonItem) {
     }
     
     //Used for DataEnteredDelegate
     func userDidEnterInformation(claim: Claim) {
-        data.addClaim(claim.name, sentence: claim.sentence, truthfulness: claim.truthfulness)
-        data.addPlayer(claim.name)
+        data.addClaim(senderName: claim.name, sentence: claim.sentence, truthfulness: claim.truthfulness)
+        data.addPlayer(name: claim.name)
         remainingClaimValue = data.claimCount
     }
     
-    func increaseUserScore(user: String, byScore score: Int){
+    func increaseUserScore(name user: String, byScore score: Int){
         if (score == 1) {
-            data.addPoint(user)
+            data.addPoint(name: user)
         } else if (score == 2) {
-            data.addYilanPoint(user)
+            data.addYilanPoint(name: user)
         } else if (score == -1) {
-            if (data.scores[user] > 0 ){
-                data.subtractPoint(user)
+            if (data.scores[user]! > 0 ){
+                data.subtractPoint(name: user)
             }
         }
     }
     
-    @IBAction func showClaim(sender: UIButton) {
+    @IBAction func showClaim(_ sender: UIButton) {
         
         if (data.claimCount != 0 ) {
         claimOwner.text = nil
@@ -124,27 +126,27 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
             
         audioPlayer.play()
             
-        anilButton.enabled = true
-        showClaimButton.enabled = false
+        anilButton.isEnabled = true
+        showClaimButton.isEnabled = false
         }
     }
     
-    @IBAction func reveal(sender: AnyObject) {
+    @IBAction func reveal(_ sender: AnyObject) {
         if let temp = claimOwnerString{
             claimOwner.text = " - \(temp)"
         }
         if let tempBool = claimTruthBool {
             
             if (tempBool){
-                claimTruth.textColor = UIColor.greenColor()
+                claimTruth.textColor = UIColor.green
                 claimTruth.text = "True"
             } else {
-                claimTruth.textColor = UIColor.redColor()
+                claimTruth.textColor = UIColor.red
                 claimTruth.text = "False"
             }
         }
-        showClaimButton.enabled = true
-        anilButton.enabled = false
+        showClaimButton.isEnabled = true
+        anilButton.isEnabled = false
     }
     
     func clearDisplays() {
@@ -155,7 +157,7 @@ class GameViewController: UIViewController, DataEnteredDelegate, ScoreboardDeleg
         claimOwnerString = nil
         claimTruthBool = nil
         
-        anilButton.enabled = false
-        showClaimButton.enabled = true
+        anilButton.isEnabled = false
+        showClaimButton.isEnabled = true
     }
 }

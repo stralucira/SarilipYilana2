@@ -8,20 +8,20 @@
 
 import UIKit
 import Firebase
-import Dispatch
+//import Dispatch
 import CoreFoundation
 import Foundation
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
 
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     
-    var myGroup = dispatch_group_create()
+    //var myGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         
         self.gameNameField.delegate = self
         self.userNameField.delegate = self
@@ -32,23 +32,23 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
         gameNameField.text = nil
         userNameField.text = nil
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignInViewController.keyboardWillShowNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignInViewController.keyboardWillHideNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SignInViewController.keyboardWillShowNotification(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SignInViewController.keyboardWillHideNotification(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,14 +73,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     private var gameName: String {
         get {
             if (gameNameField.text != nil) {
-                return (gameNameField.text?.lowercaseString)!
+                return (gameNameField.text?.lowercased())!
             }
             else {
                 return ""
             }
         }
     }
-    
     @IBOutlet weak var userNameField: UITextField!
     
     private var userName: String {
@@ -95,74 +94,81 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         //textField.placeholder = ""
     }
     
-    @IBAction func newGame(sender: UIButton) {
+    @IBAction func newGame(_ sender: UIButton) {
         if textFieldsValid() {
-            gameExists(gameName) { (exists) in
+            gameExists(gameName: gameName) { (exists) in
                 if exists {
                     self.joinGameInstead()
                 } else {
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    self.performSegueWithIdentifier("startNewGame", sender: self)
+                    self.dismiss(animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "startNewGame", sender: self)
                 }
             }
         }
     }
 
-    @IBAction func joinGame(sender: UIButton) {
+    @IBAction func joinGame(_ sender: UIButton) {
         if textFieldsValid() {
-            gameExists(gameName, completionHandler: { (exists) in
+            gameExists(gameName: gameName, completionHandler: { (exists) in
                 if exists {
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    self.performSegueWithIdentifier("joinGame", sender: self)
+                    self.dismiss(animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "joinGame", sender: self)
                 } else {
-                    let gameDoesNotExistAlert = UIAlertController(title:"Game Not Found", message: "Please enter an active game name to join.", preferredStyle: UIAlertControllerStyle.Alert)
+                    let gameDoesNotExistAlert = UIAlertController(title:"Game Not Found", message: "Please enter an active game name to join.", preferredStyle: UIAlertController.Style.alert)
                     gameDoesNotExistAlert.addAction(
                         UIAlertAction(
                             title: "Ok",
-                            style: UIAlertActionStyle.Cancel,
+                            style: UIAlertAction.Style.cancel,
                             handler: nil
                         )
                     )
-                    self.presentViewController(gameDoesNotExistAlert, animated: true, completion: nil)
+                    self.present(gameDoesNotExistAlert, animated: true, completion: nil)
                 }
             })
         }
     }
     
-    func gameExists(gameName: String, completionHandler: (Bool) -> ()) {
+    func gameExists(gameName: String, completionHandler: @escaping (Bool) -> ()) {
         var gameExists: Bool = false
-        dispatch_group_enter(myGroup)
-        ref.child("sessions").observeSingleEventOfType(.Value,
-            withBlock: {(snapshot) in
+        //myGroup.enter()
+        ref.child("sessions").observeSingleEvent(of: .value,
+                                                 with: {(snapshot) in
                 let sessions = snapshot.value as? NSDictionary
                 if let sessions = sessions {
                     gameExists = sessions[gameName] != nil
-                    dispatch_group_leave(self.myGroup)
+                    //self.myGroup.leave()
                 } else {
                     print("No sessions exist in database")
                     completionHandler(false)
                 }
             }
         )
-        dispatch_group_notify(myGroup, dispatch_get_main_queue(), {
-            completionHandler(gameExists)
-        })
+        
+//        DispatchQueue.main.async {
+//            completionHandler(gameExists)
+//        }
+        
+        completionHandler(gameExists)
+        
+//        dispatch_group_notify(myGroup, dispatch_get_main_queue(), {
+//          completionHandler(gameExists)
+//      })
     }
     
     func textFieldsValid() -> Bool {
-        if self.gameName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).isEmpty {
-            let gameNameEmptyAlert = UIAlertController(title: "Warning", message: "Game name cannot be empty", preferredStyle: UIAlertControllerStyle.Alert)
-            gameNameEmptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(gameNameEmptyAlert, animated: true, completion: nil)
+        if self.gameName.trimmingCharacters(in: NSCharacterSet.whitespaces).isEmpty {
+            let gameNameEmptyAlert = UIAlertController(title: "Warning", message: "Game name cannot be empty", preferredStyle: UIAlertController.Style.alert)
+            gameNameEmptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(gameNameEmptyAlert, animated: true, completion: nil)
             return false
-        } else if self.userName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).isEmpty {
-            let userNameEmptyAlert = UIAlertController(title: "Warning", message: "Your name cannot be empty", preferredStyle: UIAlertControllerStyle.Alert)
-            userNameEmptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(userNameEmptyAlert, animated: true, completion: nil)
+        } else if self.userName.trimmingCharacters(in: NSCharacterSet.whitespaces).isEmpty {
+            let userNameEmptyAlert = UIAlertController(title: "Warning", message: "Your name cannot be empty", preferredStyle: UIAlertController.Style.alert)
+            userNameEmptyAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(userNameEmptyAlert, animated: true, completion: nil)
             return false
         } else {
             return true
@@ -170,26 +176,26 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
     
     func joinGameInstead() {
-        let gameExistsAlert = UIAlertController(title:"Game Exists", message: "Do you want to join the game instead?", preferredStyle: UIAlertControllerStyle.Alert)
+        let gameExistsAlert = UIAlertController(title:"Game Exists", message: "Do you want to join the game instead?", preferredStyle: UIAlertController.Style.alert)
         gameExistsAlert.addAction(
             UIAlertAction(
                 title: "Cancel",
-                style: UIAlertActionStyle.Cancel,
+                style: UIAlertAction.Style.cancel,
                 handler: nil
             )
         )
         gameExistsAlert.addAction(
             UIAlertAction(
                 title: "Join",
-                style: UIAlertActionStyle.Default,
+                style: UIAlertAction.Style.default,
                 handler: {
                     (gameExistsAlert) in
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    self.performSegueWithIdentifier("joinGame", sender: self)
+                    self.dismiss(animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "joinGame", sender: self)
                 }
             )
         )
-        self.presentViewController(gameExistsAlert, animated: true, completion: nil)
+        self.present(gameExistsAlert, animated: true, completion: nil)
     }
     
 //    func joinGameWithName(gameName: String) {
@@ -199,7 +205,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let user = [
             "claimCount"    : 0,
             "score"         : 0,
@@ -211,7 +217,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             "initiator" : self.userName,
             "user count" : 1,
             "locked" : false
-        ]
+            ] as [String : Any]
         let metadataUpdate = [
             "sessions/\(self.gameName)/metadata" : metadata,
         ]
@@ -219,44 +225,44 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             self.ref.updateChildValues(metadataUpdate)
             self.ref.updateChildValues(userUpdate)
         
-            let navigationViewController = segue.destinationViewController as! UINavigationController
+            let navigationViewController = segue.destination as! UINavigationController
             let destinationViewController = navigationViewController.viewControllers[0] as! GameViewController
             
             destinationViewController.data.gameID = gameName
             destinationViewController.data.userName = userName
-            destinationViewController.data.addPlayer(userName)
+            destinationViewController.data.addPlayer(name: userName)
             
         } else if (segue.identifier == "joinGame") {
             self.ref.updateChildValues(userUpdate)
             
             let userCountReference = ref.child("sessions/\(self.gameName)/metadata/user count")
             
-            userCountReference.runTransactionBlock({ (currentData: FIRMutableData) -> FIRTransactionResult in
+            userCountReference.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
                 if let count = currentData.value as? Int {
                     currentData.value = count + 1
                 }
-                return FIRTransactionResult.successWithValue(currentData)
+                return TransactionResult.success(withValue: currentData)
             }) { (error, committed, snapshot) in
                 if let error = error {
                     print(error.localizedDescription)
                 }
             }
             
-            let navigationViewController = segue.destinationViewController as! UINavigationController
+            let navigationViewController = segue.destination as! UINavigationController
             let destinationViewController = navigationViewController.viewControllers[0] as! GameViewController
             
             destinationViewController.data.gameID = gameName
             destinationViewController.data.userName = userName
-            destinationViewController.data.addPlayer(userName)
+            destinationViewController.data.addPlayer(name: userName)
         }
     }
     
-    func keyboardWillShowNotification(notification: NSNotification) {
+    @objc func keyboardWillShowNotification(notification: NSNotification) {
         
         let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         
-        UIView.animateWithDuration(0.1, animations: { () -> Void in
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
             
             self.bottomConstraint.constant = -keyboardFrame.size.height
             self.view.layoutIfNeeded()
@@ -264,9 +270,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
-    func keyboardWillHideNotification(notification: NSNotification) {
+    @objc func keyboardWillHideNotification(notification: NSNotification) {
         
-        UIView.animateWithDuration(0.1, animations: { () -> Void in
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
             
             self.bottomConstraint.constant = 0
             self.view.layoutIfNeeded()
@@ -275,7 +281,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
