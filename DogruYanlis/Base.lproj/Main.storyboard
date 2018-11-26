@@ -41,7 +41,7 @@
                                             <color key="titleColor" red="0.086274509803921567" green="0.5725490196078431" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="2nD-NG-jXc"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="makeYourClaims" id="2nD-NG-jXc"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyA-Wi-dtg">
@@ -52,8 +52,7 @@
                                         </constraints>
                                         <state key="normal" title="Reveal" image="anil"/>
                                         <connections>
-                                            <action selector="reveal:" destination="crp-Xg-o8P" eventType="touchUpInside" id="MUD-yG-e3n"/>
-                                            <action selector="revealWithSender:" destination="crp-Xg-o8P" eventType="touchUpInside" id="LyY-iC-7GR"/>
+                                            <action selector="reveal:" destination="crp-Xg-o8P" eventType="touchUpInside" id="sNm-8G-uFY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J07-o8-EeN">
@@ -63,8 +62,7 @@
                                             <color key="titleColor" red="0.086274509799999996" green="0.57254901960000004" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="showClaim:" destination="crp-Xg-o8P" eventType="touchUpInside" id="fP1-Ja-1JI"/>
-                                            <action selector="showClaimWithSender:" destination="crp-Xg-o8P" eventType="touchUpInside" id="6XK-Gz-ejQ"/>
+                                            <action selector="showClaim:" destination="crp-Xg-o8P" eventType="touchUpInside" id="Vj8-Tx-jzx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -138,7 +136,7 @@
                         <outlet property="claimOwner" destination="Bzd-Wo-N0f" id="Poi-TU-2S5"/>
                         <outlet property="claimTruth" destination="VRL-t6-tjo" id="0W7-DQ-bLX"/>
                         <outlet property="newGameButton" destination="hM9-mb-fuX" id="QtG-Vp-0fY"/>
-                        <outlet property="remainingClaims" destination="rsE-cq-NnM" id="8h9-9V-ecG"/>
+                        <outlet property="remainingClaims" destination="rsE-cq-NnM" id="EUX-IP-kjg"/>
                         <outlet property="showClaimButton" destination="J07-o8-EeN" id="pOS-IE-G1f"/>
                         <segue destination="QMp-rH-8Gq" kind="show" identifier="quitGame" id="kjm-jf-do9"/>
                     </connections>
@@ -232,8 +230,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IU1-1y-sB9"/>
-                                    <action selector="saveWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VEx-kr-gK1"/>
+                                    <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GFu-Wa-47U"/>
                                 </connections>
                             </button>
                         </subviews>
